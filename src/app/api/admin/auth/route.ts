@@ -1,0 +1,75 @@
+import { NextRequest, NextResponse } from "next/server";
+import { createServerClient } from "@/lib/supabase-server";
+import { AdminLoginSchema } from "@/lib/schemas";
+import { generateSessionToken, ADMIN_SESSION_COOKIE } from "@/lib/admin-auth";
+
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.json();
+    const parsed = AdminLoginSchema.safeParse(body);
+
+    if (!parsed.success) {
+      return NextResponse.json(
+        { error: "Identifiants invalides" },
+        { status: 400 }
+      );
+    }
+
+    const db = createServerClient();
+
+    // Authenticate with Supabase Auth
+    const { data, error } = await db.auth.signInWithPassword({
+      email: parsed.data.email,
+      password: parsed.data.password,
+    });
+
+    if (error || !data.user) {
+      return NextResponse.json(
+        { error: "E-mail ou mot de passe incorrect" },
+        { status: 401 }
+      );
+    }
+
+    // Generate session token
+    const sessionToken = generateSessionToken();
+
+    // Log the login
+    await db.from("admin_audit_logs").insert({
+      admin_email: parsed.data.email,
+      action: "login",
+      details: {
+        session_token: sessionToken,
+        user_agent: request.headers.get("user-agent"),
+        ip: request.headers.get("x-forwarded-for") ?? "unknown",
+      },
+    });
+
+    // Set session cookie
+    const response = NextResponse.json({ success: true });
+    response.cookies.set(ADMIN_SESSION_COOKIE, sessionToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      path: "/",
+      maxAge: 60 * 60 * 8, // 8 hours
+    });
+
+    return response;
+  } catch (err) {
+    console.error("Admin auth error:", err);
+    return NextResponse.json({ error: "Erreur serveur" }, { status: 500 });
+  }
+}
+
+export async function DELETE() {
+  // Logout
+  const response = NextResponse.json({ success: true });
+  response.cookies.set(ADMIN_SESSION_COOKIE, "", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    path: "/",
+    maxAge: 0,
+  });
+  return response;
+}
