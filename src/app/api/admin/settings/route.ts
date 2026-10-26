@@ -13,7 +13,7 @@ export async function GET() {
   const db = createServerClient();
   const { data, error } = await db
     .from("app_settings")
-    .select("cle, valeur");
+    .select("key, value");
 
   if (error) {
     console.error("Settings read error:", error);
@@ -23,7 +23,7 @@ export async function GET() {
   // Convert rows to a key-value object
   const settings: Record<string, string> = {};
   for (const row of data ?? []) {
-    settings[row.cle] = row.valeur;
+    settings[row.key] = row.value;
   }
 
   return NextResponse.json({
@@ -52,43 +52,43 @@ export async function PUT(request: NextRequest) {
   }
 
   const db = createServerClient();
-  const updates: { cle: string; valeur: string }[] = [];
+  const updates: { key: string; value: string }[] = [];
 
   if (parsed.data.seuilReussite !== undefined) {
     updates.push({
-      cle: "seuil_reussite",
-      valeur: String(parsed.data.seuilReussite),
+      key: "seuil_reussite",
+      value: String(parsed.data.seuilReussite),
     });
   }
   if (parsed.data.whatsappLink !== undefined) {
     updates.push({
-      cle: "whatsapp_link",
-      valeur: parsed.data.whatsappLink,
+      key: "whatsapp_link",
+      value: parsed.data.whatsappLink,
     });
   }
   if (parsed.data.dureeMinutes !== undefined) {
     updates.push({
-      cle: "duree_minutes",
-      valeur: String(parsed.data.dureeMinutes),
+      key: "duree_minutes",
+      value: String(parsed.data.dureeMinutes),
     });
   }
   if (parsed.data.nbQuestions !== undefined) {
     updates.push({
-      cle: "nb_questions",
-      valeur: String(parsed.data.nbQuestions),
+      key: "nb_questions",
+      value: String(parsed.data.nbQuestions),
     });
   }
 
   // Upsert each setting
-  for (const { cle, valeur } of updates) {
+  for (const { key, value } of updates) {
     const { error } = await db
       .from("app_settings")
-      .upsert({ cle, valeur }, { onConflict: "cle" });
+      .upsert({ key, value }, { onConflict: "key" });
 
     if (error) {
-      console.error(`Settings update error for ${cle}:`, error);
+      console.error(`Settings update error for ${key}:`, error);
       return NextResponse.json(
-        { error: `Erreur mise à jour: ${cle}` },
+        { error: `Erreur mise à jour: ${key}` },
         { status: 500 }
       );
     }

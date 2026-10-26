@@ -128,7 +128,7 @@ INSERT INTO app_settings (key, value) VALUES
   ('seuil_reussite', '65'),
   ('duree_minutes', '25'),
   ('nb_questions', '25'),
-  ('whatsapp_link', '');
+  ('whatsapp_link', 'https://chat.whatsapp.com/LoptljeJOwH0iKvSKZeVPk?s=cl&p=i&mlu=4&ilr=4&iam=2');
 
 -- Insérer les catégories
 INSERT INTO question_categories (code, nom, poids) VALUES
