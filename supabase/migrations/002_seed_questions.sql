@@ -1,9 +1,9 @@
 -- ═══════════════════════════════════════════════════════════
---  ICS Eval — Banque de 104 questions
+--  ICS Eval — Banque de 104 questions NIVEAU DÉBUTANT
+--  Questions de base : définitions, significations, vocabulaire
 --  Répartition : Réseaux 26, Vulnérabilités 36, Méthodologie 26, IA/Éthique 16
 -- ═══════════════════════════════════════════════════════════
 
--- Helper: on récupère les IDs des catégories
 DO $$
 DECLARE
   cat_reseaux UUID;
@@ -23,263 +23,263 @@ BEGIN
 
   -- R1
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_reseaux, 'Quel protocole de la couche transport assure une livraison fiable et ordonnée des données ?', 'TCP (Transmission Control Protocol) utilise un mécanisme de connexion en trois étapes (SYN, SYN-ACK, ACK) et des accusés de réception pour garantir la livraison fiable et ordonnée des segments.', 'facile')
+    (gen_random_uuid(), cat_reseaux, 'Que signifie le sigle "HTTP" ?', 'HTTP signifie HyperText Transfer Protocol. C''est le protocole utilisé pour transférer les pages web entre un serveur et un navigateur.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'TCP', true, 1),
-    (q_id, 'UDP', false, 2),
-    (q_id, 'ICMP', false, 3),
-    (q_id, 'ARP', false, 4);
+    (q_id, 'HyperText Transfer Protocol', true, 1),
+    (q_id, 'High Technology Transfer Program', false, 2),
+    (q_id, 'HyperText Transmission Port', false, 3),
+    (q_id, 'Home Tool Transfer Protocol', false, 4);
 
   -- R2
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_reseaux, 'Quel est le port par défaut du protocole HTTPS ?', 'HTTPS utilise le port 443 par défaut. HTTP utilise le port 80, FTP le port 21 et SSH le port 22.', 'facile')
+    (gen_random_uuid(), cat_reseaux, 'Qu''est-ce qu''une adresse IP ?', 'Une adresse IP (Internet Protocol) est un numéro unique attribué à chaque appareil connecté à un réseau. Elle permet d''identifier et de localiser un appareil sur Internet ou un réseau local.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, '443', true, 1),
-    (q_id, '80', false, 2),
-    (q_id, '8080', false, 3),
-    (q_id, '8443', false, 4);
+    (q_id, 'Un numéro unique qui identifie un appareil sur un réseau', true, 1),
+    (q_id, 'Le nom d''un site web', false, 2),
+    (q_id, 'Un mot de passe pour accéder à Internet', false, 3),
+    (q_id, 'Un logiciel de navigation web', false, 4);
 
   -- R3
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_reseaux, 'Quelle méthode HTTP est utilisée pour soumettre des données dans un formulaire web de manière sécurisée ?', 'POST envoie les données dans le corps de la requête, contrairement à GET qui les place dans l''URL et les expose dans l''historique, les logs serveur et la barre d''adresse.', 'facile')
+    (gen_random_uuid(), cat_reseaux, 'Que signifie le "S" dans "HTTPS" ?', 'Le "S" signifie Secure (sécurisé). HTTPS chiffre les données échangées entre le navigateur et le serveur grâce au protocole TLS/SSL, ce qui protège contre l''espionnage.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'POST', true, 1),
-    (q_id, 'GET', false, 2),
-    (q_id, 'HEAD', false, 3),
-    (q_id, 'OPTIONS', false, 4);
+    (q_id, 'Secure (sécurisé)', true, 1),
+    (q_id, 'Speed (vitesse)', false, 2),
+    (q_id, 'Server (serveur)', false, 3),
+    (q_id, 'System (système)', false, 4);
 
   -- R4
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_reseaux, 'Que signifie le code de statut HTTP 403 ?', '403 Forbidden indique que le serveur a compris la requête mais refuse de l''autoriser. Contrairement à 401 (non authentifié), l''authentification ne changera rien.', 'facile')
+    (gen_random_uuid(), cat_reseaux, 'Quel est le rôle d''un serveur DNS ?', 'Le DNS (Domain Name System) traduit les noms de domaine (comme google.com) en adresses IP. C''est comme un annuaire téléphonique d''Internet.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Accès interdit', true, 1),
-    (q_id, 'Page non trouvée', false, 2),
-    (q_id, 'Erreur serveur interne', false, 3),
-    (q_id, 'Redirection permanente', false, 4);
+    (q_id, 'Traduire les noms de domaine en adresses IP', true, 1),
+    (q_id, 'Stocker les fichiers des sites web', false, 2),
+    (q_id, 'Protéger contre les virus', false, 3),
+    (q_id, 'Envoyer des e-mails', false, 4);
 
   -- R5
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_reseaux, 'Quel en-tête HTTP est utilisé pour indiquer le type de contenu envoyé dans la réponse ?', 'L''en-tête Content-Type informe le client du type MIME du contenu de la réponse (ex : text/html, application/json), ce qui détermine comment le navigateur interprète les données.', 'facile')
+    (gen_random_uuid(), cat_reseaux, 'Qu''est-ce qu''un port en informatique réseau ?', 'Un port est un numéro qui identifie un service ou une application sur un appareil. Par exemple, le port 80 est utilisé par HTTP et le port 443 par HTTPS.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Content-Type', true, 1),
-    (q_id, 'Accept', false, 2),
-    (q_id, 'Authorization', false, 3),
-    (q_id, 'Cache-Control', false, 4);
+    (q_id, 'Un numéro qui identifie un service sur un appareil', true, 1),
+    (q_id, 'Un câble qui relie deux ordinateurs', false, 2),
+    (q_id, 'Un type de virus informatique', false, 3),
+    (q_id, 'Un logiciel de sécurité', false, 4);
 
   -- R6
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_reseaux, 'Quel protocole est utilisé pour résoudre un nom de domaine en adresse IP ?', 'Le DNS (Domain Name System) traduit les noms de domaine lisibles par l''humain en adresses IP utilisables par les machines, fonctionnant principalement sur le port 53.', 'facile')
+    (gen_random_uuid(), cat_reseaux, 'Quel port est utilisé par défaut par le protocole HTTP ?', 'Le port 80 est le port standard pour HTTP. Le port 443 est pour HTTPS, le port 22 pour SSH et le port 21 pour FTP.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'DNS', true, 1),
-    (q_id, 'DHCP', false, 2),
-    (q_id, 'ARP', false, 3),
-    (q_id, 'NTP', false, 4);
+    (q_id, '80', true, 1),
+    (q_id, '443', false, 2),
+    (q_id, '22', false, 3),
+    (q_id, '8080', false, 4);
 
   -- R7
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_reseaux, 'Dans le modèle OSI, à quelle couche appartient le protocole HTTP ?', 'HTTP est un protocole de la couche Application (couche 7) du modèle OSI. Il s''appuie sur TCP (couche 4) pour le transport des données.', 'intermediaire')
+    (gen_random_uuid(), cat_reseaux, 'Que signifie le sigle "URL" ?', 'URL signifie Uniform Resource Locator. C''est l''adresse complète d''une page web, par exemple https://www.example.com/page.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Couche 7 – Application', true, 1),
-    (q_id, 'Couche 4 – Transport', false, 2),
-    (q_id, 'Couche 3 – Réseau', false, 3),
-    (q_id, 'Couche 6 – Présentation', false, 4);
+    (q_id, 'Uniform Resource Locator', true, 1),
+    (q_id, 'Universal Remote Link', false, 2),
+    (q_id, 'Unique Reference Language', false, 3),
+    (q_id, 'User Registration Login', false, 4);
 
   -- R8
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_reseaux, 'Quel en-tête HTTP permet de mettre en cache une réponse côté client pendant une durée définie ?', 'Cache-Control avec la directive max-age permet de définir la durée de mise en cache côté client. Expires est plus ancien et moins flexible.', 'intermediaire')
+    (gen_random_uuid(), cat_reseaux, 'Qu''est-ce qu''un navigateur web ?', 'Un navigateur web est un logiciel qui permet d''accéder aux sites Internet. Exemples : Chrome, Firefox, Safari, Edge.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Cache-Control', true, 1),
-    (q_id, 'Pragma', false, 2),
-    (q_id, 'ETag', false, 3),
-    (q_id, 'X-Cache', false, 4);
+    (q_id, 'Un logiciel qui permet d''afficher les sites web', true, 1),
+    (q_id, 'Un câble réseau', false, 2),
+    (q_id, 'Un système d''exploitation', false, 3),
+    (q_id, 'Un serveur de base de données', false, 4);
 
   -- R9
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_reseaux, 'Quelle est la différence principale entre HTTP/1.1 et HTTP/2 ?', 'HTTP/2 introduit le multiplexage, permettant d''envoyer plusieurs requêtes et réponses simultanément sur une seule connexion TCP, éliminant le blocage head-of-line de HTTP/1.1.', 'intermediaire')
+    (gen_random_uuid(), cat_reseaux, 'Quelle est la différence principale entre TCP et UDP ?', 'TCP vérifie que les données arrivent correctement (fiable mais plus lent). UDP envoie les données sans vérification (plus rapide mais pas garanti).', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'HTTP/2 supporte le multiplexage de requêtes sur une connexion', true, 1),
-    (q_id, 'HTTP/2 utilise UDP au lieu de TCP', false, 2),
-    (q_id, 'HTTP/2 supprime les en-têtes de requête', false, 3),
-    (q_id, 'HTTP/2 ne supporte pas le chiffrement TLS', false, 4);
+    (q_id, 'TCP est fiable et vérifie la réception, UDP est plus rapide mais sans garantie', true, 1),
+    (q_id, 'TCP est plus rapide que UDP', false, 2),
+    (q_id, 'UDP est plus sécurisé que TCP', false, 3),
+    (q_id, 'Il n''y a aucune différence', false, 4);
 
   -- R10
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_reseaux, 'Quel est le rôle d''un certificat TLS dans une connexion HTTPS ?', 'Un certificat TLS authentifie l''identité du serveur auprès du client et permet l''établissement d''un canal chiffré via un échange de clés, protégeant les données en transit.', 'intermediaire')
+    (gen_random_uuid(), cat_reseaux, 'Que signifie le sigle "LAN" ?', 'LAN signifie Local Area Network (réseau local). C''est un réseau qui connecte des appareils dans une zone limitée, comme un bureau ou une maison.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Authentifier le serveur et permettre le chiffrement des données', true, 1),
-    (q_id, 'Accélérer le chargement des pages web', false, 2),
-    (q_id, 'Bloquer les requêtes malveillantes', false, 3),
-    (q_id, 'Compresser les données transmises', false, 4);
+    (q_id, 'Local Area Network', true, 1),
+    (q_id, 'Large Access Network', false, 2),
+    (q_id, 'Link And Node', false, 3),
+    (q_id, 'Login Authentication Name', false, 4);
 
   -- R11
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_reseaux, 'Qu''est-ce qu''un cookie de session HTTP ?', 'Un cookie de session est un petit fichier stocké par le navigateur qui contient un identifiant de session. Le serveur l''utilise pour reconnaître l''utilisateur entre les requêtes, car HTTP est sans état.', 'facile')
+    (gen_random_uuid(), cat_reseaux, 'Qu''est-ce qu''un pare-feu (firewall) ?', 'Un pare-feu est un dispositif de sécurité qui filtre le trafic réseau entrant et sortant selon des règles définies. Il protège un réseau contre les accès non autorisés.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Un identifiant temporaire stocké par le navigateur pour maintenir l''état de connexion', true, 1),
-    (q_id, 'Un fichier exécutable téléchargé par le serveur', false, 2),
-    (q_id, 'Un en-tête HTTP pour la compression des données', false, 3),
-    (q_id, 'Un certificat de sécurité pour le chiffrement', false, 4);
+    (q_id, 'Un système qui filtre le trafic réseau pour bloquer les accès non autorisés', true, 1),
+    (q_id, 'Un antivirus', false, 2),
+    (q_id, 'Un câble réseau spécial', false, 3),
+    (q_id, 'Un navigateur web sécurisé', false, 4);
 
   -- R12
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_reseaux, 'Quel outil en ligne de commande est couramment utilisé pour effectuer des requêtes HTTP ?', 'curl (client URL) est un outil en ligne de commande pour transférer des données avec des URL. Il supporte HTTP, HTTPS, FTP et de nombreux autres protocoles.', 'facile')
+    (gen_random_uuid(), cat_reseaux, 'Que signifie le sigle "VPN" ?', 'VPN signifie Virtual Private Network (réseau privé virtuel). Il crée un tunnel chiffré entre ton appareil et un serveur distant pour protéger tes données.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'curl', true, 1),
-    (q_id, 'ping', false, 2),
-    (q_id, 'traceroute', false, 3),
-    (q_id, 'netstat', false, 4);
+    (q_id, 'Virtual Private Network', true, 1),
+    (q_id, 'Very Protected Network', false, 2),
+    (q_id, 'Virtual Public Node', false, 3),
+    (q_id, 'Verified Personal Name', false, 4);
 
   -- R13
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_reseaux, 'Quelle adresse IP est réservée pour désigner la machine locale (loopback) ?', 'L''adresse 127.0.0.1 est l''adresse de bouclage (loopback) IPv4. Toute donnée envoyée à cette adresse ne quitte jamais la machine et revient à l''émetteur.', 'facile')
+    (gen_random_uuid(), cat_reseaux, 'Qu''est-ce qu''un cookie dans un navigateur web ?', 'Un cookie est un petit fichier texte stocké par le navigateur. Il permet aux sites de se souvenir de toi (connexion, préférences, panier d''achat).', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, '127.0.0.1', true, 1),
-    (q_id, '192.168.0.1', false, 2),
-    (q_id, '10.0.0.1', false, 3),
-    (q_id, '0.0.0.0', false, 4);
+    (q_id, 'Un petit fichier stocké par le navigateur pour mémoriser des informations', true, 1),
+    (q_id, 'Un virus informatique', false, 2),
+    (q_id, 'Un type de mot de passe', false, 3),
+    (q_id, 'Une extension du navigateur', false, 4);
 
   -- R14
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_reseaux, 'Quel mécanisme CORS permet au navigateur de vérifier si une requête cross-origin est autorisée ?', 'La requête preflight est un OPTIONS envoyé par le navigateur avant une requête cross-origin « complexe » pour vérifier si le serveur autorise l''origine, les méthodes et les en-têtes demandés.', 'avance')
+    (gen_random_uuid(), cat_reseaux, 'Quelle est la fonction d''un serveur web ?', 'Un serveur web est un ordinateur qui stocke les fichiers d''un site web et les envoie aux navigateurs qui les demandent via le protocole HTTP/HTTPS.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'La requête preflight (OPTIONS)', true, 1),
-    (q_id, 'L''en-tête Referer', false, 2),
-    (q_id, 'Le cookie de session', false, 3),
-    (q_id, 'Le jeton CSRF', false, 4);
+    (q_id, 'Stocker et envoyer les pages web aux navigateurs', true, 1),
+    (q_id, 'Protéger contre les virus', false, 2),
+    (q_id, 'Créer des adresses e-mail', false, 3),
+    (q_id, 'Gérer les mots de passe des utilisateurs', false, 4);
 
   -- R15
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_reseaux, 'Quel protocole sécurise la couche transport pour HTTPS ?', 'TLS (Transport Layer Security) est le protocole qui chiffre les communications entre le navigateur et le serveur. SSL est son prédécesseur obsolète.', 'facile')
+    (gen_random_uuid(), cat_reseaux, 'Que signifie "Wi-Fi" ?', 'Wi-Fi est une technologie de réseau sans fil qui permet aux appareils de se connecter à Internet ou entre eux sans câble, en utilisant des ondes radio.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'TLS', true, 1),
-    (q_id, 'SSH', false, 2),
-    (q_id, 'IPSec', false, 3),
-    (q_id, 'WPA2', false, 4);
+    (q_id, 'Une technologie de connexion réseau sans fil', true, 1),
+    (q_id, 'Un type de câble réseau', false, 2),
+    (q_id, 'Un protocole de sécurité', false, 3),
+    (q_id, 'Un logiciel antivirus', false, 4);
 
   -- R16
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_reseaux, 'Quelle commande permet d''afficher la table de routage d''un système Linux ?', 'La commande « ip route » (ou son ancêtre « route -n ») affiche la table de routage du noyau Linux, montrant les passerelles et les interfaces réseau utilisées.', 'intermediaire')
+    (gen_random_uuid(), cat_reseaux, 'Qu''est-ce que le protocole FTP ?', 'FTP (File Transfer Protocol) est un protocole utilisé pour transférer des fichiers entre un client et un serveur. Il utilise le port 21 par défaut.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'ip route', true, 1),
-    (q_id, 'ifconfig', false, 2),
-    (q_id, 'netstat -a', false, 3),
-    (q_id, 'arp -a', false, 4);
+    (q_id, 'Un protocole de transfert de fichiers', true, 1),
+    (q_id, 'Un pare-feu', false, 2),
+    (q_id, 'Un type de virus', false, 3),
+    (q_id, 'Un navigateur web', false, 4);
 
   -- R17
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_reseaux, 'Quel en-tête HTTP est utilisé pour transmettre les informations d''authentification ?', 'L''en-tête Authorization transporte les identifiants d''authentification (token Bearer, Basic Auth, etc.) dans chaque requête nécessitant une authentification.', 'intermediaire')
+    (gen_random_uuid(), cat_reseaux, 'Qu''est-ce qu''une adresse MAC ?', 'Une adresse MAC (Media Access Control) est un identifiant unique attribué à la carte réseau de chaque appareil. Elle est fixée par le fabricant.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Authorization', true, 1),
-    (q_id, 'Cookie', false, 2),
-    (q_id, 'X-Auth-Token', false, 3),
-    (q_id, 'WWW-Authenticate', false, 4);
+    (q_id, 'Un identifiant unique de la carte réseau d''un appareil', true, 1),
+    (q_id, 'L''adresse d''un ordinateur Apple Mac', false, 2),
+    (q_id, 'Un mot de passe réseau', false, 3),
+    (q_id, 'Une adresse e-mail spéciale', false, 4);
 
   -- R18
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_reseaux, 'Qu''est-ce que le Same-Origin Policy (SOP) dans un navigateur ?', 'La SOP est un mécanisme de sécurité du navigateur qui empêche un script d''une origine (schéma + domaine + port) d''accéder aux ressources d''une autre origine, limitant ainsi les attaques cross-site.', 'intermediaire')
+    (gen_random_uuid(), cat_reseaux, 'Que fait la commande "ping" ?', 'La commande ping envoie un petit message à un autre appareil sur le réseau pour vérifier s''il est joignable et mesurer le temps de réponse.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Une politique de sécurité qui restreint les interactions entre origines différentes', true, 1),
-    (q_id, 'Un pare-feu intégré au navigateur', false, 2),
-    (q_id, 'Un mécanisme de cache des ressources web', false, 3),
-    (q_id, 'Un protocole de chiffrement des cookies', false, 4);
+    (q_id, 'Vérifier si un appareil est joignable sur le réseau', true, 1),
+    (q_id, 'Télécharger un fichier', false, 2),
+    (q_id, 'Supprimer un virus', false, 3),
+    (q_id, 'Créer un nouveau réseau', false, 4);
 
   -- R19
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_reseaux, 'Quel code de statut HTTP indique qu''une ressource a été déplacée de façon permanente ?', 'Le code 301 (Moved Permanently) indique que la ressource a été déplacée définitivement vers une nouvelle URL. Le navigateur met à jour ses signets et les moteurs de recherche transfèrent le référencement.', 'facile')
+    (gen_random_uuid(), cat_reseaux, 'Que signifie le sigle "SSH" ?', 'SSH signifie Secure Shell. C''est un protocole qui permet de se connecter à distance à un ordinateur de manière sécurisée (chiffrée). Il utilise le port 22.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, '301', true, 1),
-    (q_id, '302', false, 2),
-    (q_id, '404', false, 3),
-    (q_id, '200', false, 4);
+    (q_id, 'Secure Shell', true, 1),
+    (q_id, 'Super Safe Hosting', false, 2),
+    (q_id, 'System Security Hub', false, 3),
+    (q_id, 'Server Share Host', false, 4);
 
   -- R20
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_reseaux, 'Quel est le rôle d''un proxy inverse (reverse proxy) ?', 'Un reverse proxy se place devant un ou plusieurs serveurs web pour distribuer le trafic, gérer le TLS, mettre en cache les réponses et masquer l''architecture interne.', 'intermediaire')
+    (gen_random_uuid(), cat_reseaux, 'Qu''est-ce qu''un proxy ?', 'Un proxy est un serveur intermédiaire entre ton ordinateur et Internet. Il peut filtrer le trafic, cacher ton adresse IP ou accélérer la navigation grâce au cache.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Recevoir les requêtes des clients et les transmettre aux serveurs internes', true, 1),
-    (q_id, 'Masquer l''adresse IP du client', false, 2),
-    (q_id, 'Chiffrer les fichiers stockés sur le serveur', false, 3),
-    (q_id, 'Bloquer tous les ports sauf le port 80', false, 4);
+    (q_id, 'Un serveur intermédiaire entre l''utilisateur et Internet', true, 1),
+    (q_id, 'Un type de virus', false, 2),
+    (q_id, 'Un câble réseau', false, 3),
+    (q_id, 'Un système d''exploitation', false, 4);
 
   -- R21
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_reseaux, 'Quelle méthode HTTP est idempotente et utilisée pour supprimer une ressource ?', 'DELETE est la méthode HTTP standard pour demander la suppression d''une ressource. Elle est idempotente : appeler DELETE plusieurs fois produit le même résultat.', 'intermediaire')
+    (gen_random_uuid(), cat_reseaux, 'Quelle est la différence entre HTTP et HTTPS ?', 'HTTPS est la version sécurisée de HTTP. Les données sont chiffrées avec TLS/SSL, ce qui empêche quelqu''un d''intercepter et lire les informations échangées.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'DELETE', true, 1),
-    (q_id, 'POST', false, 2),
-    (q_id, 'PATCH', false, 3),
-    (q_id, 'PUT', false, 4);
+    (q_id, 'HTTPS chiffre les données, HTTP ne les chiffre pas', true, 1),
+    (q_id, 'HTTPS est plus lent que HTTP', false, 2),
+    (q_id, 'HTTP est plus sécurisé que HTTPS', false, 3),
+    (q_id, 'Il n''y a aucune différence', false, 4);
 
   -- R22
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_reseaux, 'Qu''est-ce qu''une requête WebSocket comparée à HTTP ?', 'WebSocket établit une connexion bidirectionnelle persistante entre le client et le serveur, permettant l''envoi de messages dans les deux sens sans nouvelle requête, contrairement au modèle requête-réponse de HTTP.', 'avance')
+    (gen_random_uuid(), cat_reseaux, 'Que signifie le sigle "API" ?', 'API signifie Application Programming Interface. C''est un ensemble de règles qui permet à deux applications de communiquer entre elles.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Un protocole bidirectionnel persistant au-dessus de TCP', true, 1),
-    (q_id, 'Une version plus rapide de HTTP/2', false, 2),
-    (q_id, 'Un protocole utilisé uniquement pour le streaming vidéo', false, 3),
-    (q_id, 'Un mécanisme de mise en cache côté serveur', false, 4);
+    (q_id, 'Application Programming Interface', true, 1),
+    (q_id, 'Advanced Protection Internet', false, 2),
+    (q_id, 'Automatic Program Installation', false, 3),
+    (q_id, 'Active Port Identification', false, 4);
 
   -- R23
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_reseaux, 'Quel outil permet de capturer et d''analyser le trafic réseau en temps réel ?', 'Wireshark est un analyseur de protocoles réseau open source qui capture et affiche les paquets en temps réel, permettant d''inspecter les échanges à tous les niveaux du modèle OSI.', 'facile')
+    (gen_random_uuid(), cat_reseaux, 'Qu''est-ce que le protocole DHCP ?', 'DHCP (Dynamic Host Configuration Protocol) attribue automatiquement une adresse IP aux appareils qui se connectent au réseau, sans configuration manuelle.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Wireshark', true, 1),
-    (q_id, 'Nmap', false, 2),
-    (q_id, 'Metasploit', false, 3),
-    (q_id, 'John the Ripper', false, 4);
+    (q_id, 'Un protocole qui attribue automatiquement des adresses IP', true, 1),
+    (q_id, 'Un protocole de transfert de fichiers', false, 2),
+    (q_id, 'Un protocole de messagerie', false, 3),
+    (q_id, 'Un protocole de chiffrement', false, 4);
 
   -- R24
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_reseaux, 'Quelle est la plage d''adresses IP privées de classe C ?', 'La plage 192.168.0.0 à 192.168.255.255 (192.168.0.0/16) est réservée aux réseaux privés de classe C, couramment utilisée dans les réseaux locaux domestiques et d''entreprise.', 'intermediaire')
+    (gen_random_uuid(), cat_reseaux, 'Qu''est-ce qu''un nom de domaine ?', 'Un nom de domaine est l''adresse lisible d''un site web (comme google.com). Le DNS le traduit en adresse IP pour que l''ordinateur puisse trouver le serveur.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, '192.168.0.0 – 192.168.255.255', true, 1),
-    (q_id, '10.0.0.0 – 10.255.255.255', false, 2),
-    (q_id, '172.16.0.0 – 172.31.255.255', false, 3),
-    (q_id, '169.254.0.0 – 169.254.255.255', false, 4);
+    (q_id, 'Le nom lisible d''un site web, comme google.com', true, 1),
+    (q_id, 'Le mot de passe d''un site web', false, 2),
+    (q_id, 'L''adresse IP d''un serveur', false, 3),
+    (q_id, 'Le nom du propriétaire d''un site', false, 4);
 
   -- R25
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_reseaux, 'Quel en-tête HTTP permet d''empêcher le navigateur d''interpréter le contenu différemment du Content-Type déclaré ?', 'X-Content-Type-Options: nosniff empêche le navigateur de faire du MIME sniffing, c''est-à-dire de deviner le type de contenu au lieu de respecter le Content-Type déclaré, ce qui peut prévenir certaines attaques XSS.', 'avance')
+    (gen_random_uuid(), cat_reseaux, 'Que signifie le chiffrement des données ?', 'Le chiffrement transforme les données en un format illisible pour quiconque ne possède pas la clé de déchiffrement. Cela protège la confidentialité des informations.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'X-Content-Type-Options', true, 1),
-    (q_id, 'Strict-Transport-Security', false, 2),
-    (q_id, 'Content-Security-Policy', false, 3),
-    (q_id, 'X-Frame-Options', false, 4);
+    (q_id, 'Transformer les données pour les rendre illisibles sans la clé', true, 1),
+    (q_id, 'Compresser les données pour gagner de l''espace', false, 2),
+    (q_id, 'Supprimer les données définitivement', false, 3),
+    (q_id, 'Copier les données sur un autre serveur', false, 4);
 
   -- R26
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_reseaux, 'Quel type d''enregistrement DNS associe un nom de domaine à une adresse IPv4 ?', 'L''enregistrement A (Address) mappe un nom de domaine vers une adresse IPv4. L''enregistrement AAAA est pour IPv6, CNAME est un alias, et MX désigne les serveurs de messagerie.', 'intermediaire')
+    (gen_random_uuid(), cat_reseaux, 'Qu''est-ce qu''une requête GET en HTTP ?', 'Une requête GET demande au serveur de renvoyer une ressource (comme une page web). Les paramètres sont visibles dans l''URL. Elle ne modifie pas les données du serveur.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'A', true, 1),
-    (q_id, 'CNAME', false, 2),
-    (q_id, 'MX', false, 3),
-    (q_id, 'TXT', false, 4);
+    (q_id, 'Une demande pour récupérer des données depuis un serveur', true, 1),
+    (q_id, 'Une demande pour supprimer un fichier', false, 2),
+    (q_id, 'Une demande pour modifier un mot de passe', false, 3),
+    (q_id, 'Une demande pour créer un nouveau compte', false, 4);
 
   -- ═══════════════════════════════════════════════════════
   --  DOMAINE 2 : Vulnérabilités Web (36 questions)
@@ -287,790 +287,790 @@ BEGIN
 
   -- V1
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Qu''est-ce qu''une injection SQL ?', 'L''injection SQL consiste à insérer du code SQL malveillant dans les entrées utilisateur d''une application web, exploitant un manque de validation pour manipuler la base de données sous-jacente.', 'facile')
+    (gen_random_uuid(), cat_vuln, 'Qu''est-ce qu''une vulnérabilité informatique ?', 'Une vulnérabilité est une faiblesse dans un système, un logiciel ou un réseau qui peut être exploitée par un attaquant pour causer des dommages ou accéder à des données.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'L''insertion de code SQL malveillant via les entrées utilisateur', true, 1),
-    (q_id, 'Le vol de cookies de session', false, 2),
-    (q_id, 'L''envoi de requêtes depuis un autre site', false, 3),
-    (q_id, 'La modification des en-têtes HTTP', false, 4);
+    (q_id, 'Une faiblesse qui peut être exploitée par un attaquant', true, 1),
+    (q_id, 'Un logiciel de protection', false, 2),
+    (q_id, 'Un type de pare-feu', false, 3),
+    (q_id, 'Une mise à jour de sécurité', false, 4);
 
   -- V2
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Quelle payload basique permet de tester une injection SQL dans un champ de connexion ?', 'La payload '' OR 1=1 -- transforme la requête SQL pour que la condition soit toujours vraie, contournant ainsi l''authentification. Le double tiret commente le reste de la requête.', 'facile')
+    (gen_random_uuid(), cat_vuln, 'Qu''est-ce que le phishing (hameçonnage) ?', 'Le phishing est une technique d''arnaque qui consiste à se faire passer pour un organisme de confiance (banque, entreprise) pour voler des informations personnelles via de faux e-mails ou sites web.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, ''' OR 1=1 --', true, 1),
-    (q_id, '<script>alert(1)</script>', false, 2),
-    (q_id, '../../../etc/passwd', false, 3),
-    (q_id, '{{7*7}}', false, 4);
+    (q_id, 'Une arnaque par faux e-mails ou sites pour voler des informations', true, 1),
+    (q_id, 'Un logiciel antivirus', false, 2),
+    (q_id, 'Une technique de chiffrement', false, 3),
+    (q_id, 'Un protocole réseau', false, 4);
 
   -- V3
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Qu''est-ce que le Cross-Site Scripting (XSS) ?', 'Le XSS est une vulnérabilité qui permet à un attaquant d''injecter du code JavaScript malveillant dans une page web consultée par d''autres utilisateurs, compromettant leur session ou leurs données.', 'facile')
+    (gen_random_uuid(), cat_vuln, 'Qu''est-ce qu''un malware ?', 'Un malware (logiciel malveillant) est un programme conçu pour endommager, perturber ou prendre le contrôle d''un système. Exemples : virus, vers, trojans, ransomwares.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'L''injection de scripts malveillants dans des pages web consultées par d''autres', true, 1),
-    (q_id, 'L''interception de paquets réseau', false, 2),
-    (q_id, 'La modification du code source du serveur', false, 3),
-    (q_id, 'L''accès non autorisé à la base de données', false, 4);
+    (q_id, 'Un logiciel malveillant conçu pour nuire', true, 1),
+    (q_id, 'Un logiciel de mise à jour', false, 2),
+    (q_id, 'Un outil de développement web', false, 3),
+    (q_id, 'Un type de réseau', false, 4);
 
   -- V4
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Quelle est la différence entre XSS stocké et XSS réfléchi ?', 'Le XSS stocké est enregistré en base de données et s''exécute à chaque affichage de la page. Le XSS réfléchi est transmis via l''URL ou un paramètre et s''exécute uniquement quand la victime clique sur un lien malveillant.', 'intermediaire')
+    (gen_random_uuid(), cat_vuln, 'Qu''est-ce qu''un ransomware ?', 'Un ransomware est un malware qui chiffre les fichiers de la victime et demande une rançon (souvent en cryptomonnaie) pour les déchiffrer.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Le XSS stocké persiste en base de données, le réfléchi est transmis via les paramètres de requête', true, 1),
-    (q_id, 'Le XSS stocké est plus facile à détecter', false, 2),
-    (q_id, 'Le XSS réfléchi nécessite un accès au serveur', false, 3),
-    (q_id, 'Il n''y a aucune différence technique', false, 4);
+    (q_id, 'Un malware qui chiffre les fichiers et demande une rançon', true, 1),
+    (q_id, 'Un logiciel de sauvegarde', false, 2),
+    (q_id, 'Un antivirus gratuit', false, 3),
+    (q_id, 'Un pare-feu avancé', false, 4);
 
   -- V5
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Qu''est-ce qu''une attaque CSRF (Cross-Site Request Forgery) ?', 'Le CSRF force un utilisateur authentifié à exécuter involontairement une action sur un site en exploitant sa session active, via un lien ou un formulaire masqué sur un site malveillant.', 'intermediaire')
+    (gen_random_uuid(), cat_vuln, 'Qu''est-ce qu''une injection SQL ?', 'Une injection SQL est une attaque où un pirate insère du code SQL malveillant dans un formulaire web pour manipuler la base de données (lire, modifier ou supprimer des données).', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Forcer un utilisateur authentifié à effectuer une action involontaire', true, 1),
-    (q_id, 'Injecter du JavaScript dans une page web', false, 2),
-    (q_id, 'Intercepter les communications chiffrées', false, 3),
-    (q_id, 'Deviner le mot de passe d''un utilisateur par brute force', false, 4);
+    (q_id, 'Insérer du code malveillant dans un formulaire pour attaquer la base de données', true, 1),
+    (q_id, 'Installer un logiciel de base de données', false, 2),
+    (q_id, 'Créer une sauvegarde de base de données', false, 3),
+    (q_id, 'Mettre à jour un serveur SQL', false, 4);
 
   -- V6
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Quelle protection principale permet de contrer les attaques CSRF ?', 'Un jeton anti-CSRF est une valeur unique et imprévisible générée par le serveur, incluse dans chaque formulaire. Le serveur vérifie sa présence à chaque soumission, empêchant les requêtes falsifiées.', 'intermediaire')
+    (gen_random_uuid(), cat_vuln, 'Qu''est-ce que le XSS (Cross-Site Scripting) ?', 'Le XSS est une attaque où un pirate injecte du code JavaScript malveillant dans une page web. Quand d''autres utilisateurs visitent la page, le script s''exécute dans leur navigateur.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Un jeton anti-CSRF (token unique par formulaire)', true, 1),
-    (q_id, 'Le chiffrement des mots de passe en base', false, 2),
-    (q_id, 'Un pare-feu applicatif (WAF)', false, 3),
-    (q_id, 'La validation du User-Agent', false, 4);
+    (q_id, 'Injecter du code JavaScript malveillant dans une page web', true, 1),
+    (q_id, 'Créer un site web', false, 2),
+    (q_id, 'Scanner un réseau', false, 3),
+    (q_id, 'Chiffrer des données', false, 4);
 
   -- V7
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Qu''est-ce qu''une IDOR (Insecure Direct Object Reference) ?', 'L''IDOR survient quand une application expose des identifiants d''objets internes (ex : /user/42) sans vérifier que l''utilisateur a le droit d''accéder à cette ressource, permettant à un attaquant de consulter ou modifier les données d''autres utilisateurs.', 'intermediaire')
+    (gen_random_uuid(), cat_vuln, 'Qu''est-ce qu''un mot de passe fort ?', 'Un mot de passe fort est long (12+ caractères), combine majuscules, minuscules, chiffres et caractères spéciaux, et n''est pas un mot du dictionnaire.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'L''accès à des ressources d''autres utilisateurs en modifiant un identifiant dans l''URL', true, 1),
-    (q_id, 'L''injection de commandes système via l''URL', false, 2),
-    (q_id, 'Le contournement du HTTPS', false, 3),
-    (q_id, 'L''envoi de requêtes massives pour surcharger le serveur', false, 4);
+    (q_id, 'Un mot de passe long avec des majuscules, chiffres et caractères spéciaux', true, 1),
+    (q_id, 'Un mot de passe de 4 chiffres', false, 2),
+    (q_id, 'Le nom de son animal de compagnie', false, 3),
+    (q_id, 'Le mot "password" en majuscules', false, 4);
 
   -- V8
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Comment prévenir les injections SQL de manière efficace ?', 'Les requêtes paramétrées (prepared statements) séparent le code SQL des données utilisateur, empêchant l''interprétation des entrées comme du code SQL. C''est la protection la plus efficace.', 'facile')
+    (gen_random_uuid(), cat_vuln, 'Qu''est-ce qu''une attaque par force brute ?', 'Une attaque par force brute consiste à essayer toutes les combinaisons possibles de mots de passe jusqu''à trouver le bon. C''est pourquoi les mots de passe longs sont importants.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Utiliser des requêtes paramétrées (prepared statements)', true, 1),
-    (q_id, 'Limiter la longueur des champs de formulaire', false, 2),
-    (q_id, 'Masquer les messages d''erreur SQL', false, 3),
-    (q_id, 'Utiliser uniquement la méthode POST', false, 4);
+    (q_id, 'Essayer toutes les combinaisons possibles de mots de passe', true, 1),
+    (q_id, 'Casser physiquement un ordinateur', false, 2),
+    (q_id, 'Envoyer beaucoup d''e-mails', false, 3),
+    (q_id, 'Couper le courant d''un serveur', false, 4);
 
   -- V9
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Qu''est-ce que le path traversal (traversée de répertoire) ?', 'Le path traversal exploite un manque de validation des chemins de fichier pour accéder à des fichiers en dehors du répertoire prévu, en utilisant des séquences comme ../ pour remonter dans l''arborescence.', 'intermediaire')
+    (gen_random_uuid(), cat_vuln, 'Qu''est-ce qu''une attaque DDoS ?', 'DDoS (Distributed Denial of Service) consiste à submerger un serveur avec un très grand nombre de requêtes pour le rendre indisponible aux utilisateurs légitimes.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'L''accès à des fichiers hors du répertoire prévu via des séquences ../', true, 1),
-    (q_id, 'Le scan de tous les ports d''un serveur', false, 2),
-    (q_id, 'La modification des permissions de fichiers', false, 3),
-    (q_id, 'L''injection de chemins dans les requêtes DNS', false, 4);
+    (q_id, 'Submerger un serveur de requêtes pour le rendre indisponible', true, 1),
+    (q_id, 'Voler des mots de passe', false, 2),
+    (q_id, 'Chiffrer les fichiers d''un serveur', false, 3),
+    (q_id, 'Installer un virus sur un ordinateur', false, 4);
 
   -- V10
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Quel en-tête HTTP aide à prévenir les attaques XSS en contrôlant les sources de contenu autorisées ?', 'Content-Security-Policy (CSP) permet de spécifier les sources autorisées de scripts, styles, images, etc. En restreignant les sources, il bloque l''exécution de scripts injectés par un attaquant.', 'intermediaire')
+    (gen_random_uuid(), cat_vuln, 'Qu''est-ce que l''ingénierie sociale ?', 'L''ingénierie sociale est l''art de manipuler des personnes pour qu''elles révèlent des informations confidentielles. Elle exploite la confiance humaine plutôt que les failles techniques.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Content-Security-Policy', true, 1),
-    (q_id, 'X-Frame-Options', false, 2),
-    (q_id, 'Referrer-Policy', false, 3),
-    (q_id, 'Access-Control-Allow-Origin', false, 4);
+    (q_id, 'Manipuler des personnes pour obtenir des informations confidentielles', true, 1),
+    (q_id, 'Construire des réseaux sociaux', false, 2),
+    (q_id, 'Programmer des robots', false, 3),
+    (q_id, 'Concevoir des sites web', false, 4);
 
   -- V11
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Quel attribut de cookie empêche son accès via JavaScript ?', 'L''attribut HttpOnly empêche les scripts côté client (JavaScript) d''accéder au cookie, ce qui protège contre le vol de cookies via des attaques XSS.', 'facile')
+    (gen_random_uuid(), cat_vuln, 'Qu''est-ce qu''un virus informatique ?', 'Un virus est un programme malveillant qui se propage en s''attachant à d''autres fichiers ou programmes. Il s''active quand l''utilisateur exécute le fichier infecté.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'HttpOnly', true, 1),
-    (q_id, 'Secure', false, 2),
-    (q_id, 'SameSite', false, 3),
-    (q_id, 'Path', false, 4);
+    (q_id, 'Un programme malveillant qui se propage en s''attachant à des fichiers', true, 1),
+    (q_id, 'Un bug dans un logiciel', false, 2),
+    (q_id, 'Un problème matériel', false, 3),
+    (q_id, 'Une panne de réseau', false, 4);
 
   -- V12
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Qu''est-ce qu''une attaque par injection de commande (command injection) ?', 'L''injection de commande exploite une application qui exécute des commandes système à partir d''entrées utilisateur non validées, permettant à l''attaquant d''exécuter des commandes arbitraires sur le serveur.', 'intermediaire')
+    (gen_random_uuid(), cat_vuln, 'Qu''est-ce qu''un cheval de Troie (trojan) ?', 'Un cheval de Troie est un malware déguisé en programme légitime. L''utilisateur l''installe volontairement en pensant que c''est un logiciel utile, mais il contient du code malveillant.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'L''exécution de commandes système via des entrées utilisateur non filtrées', true, 1),
-    (q_id, 'L''envoi de commandes SQL malveillantes', false, 2),
-    (q_id, 'La prise de contrôle d''un navigateur à distance', false, 3),
-    (q_id, 'L''injection de scripts dans un email', false, 4);
+    (q_id, 'Un malware déguisé en logiciel légitime', true, 1),
+    (q_id, 'Un antivirus', false, 2),
+    (q_id, 'Un outil de développement', false, 3),
+    (q_id, 'Un protocole de sécurité', false, 4);
 
   -- V13
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Qu''est-ce que le SSRF (Server-Side Request Forgery) ?', 'Le SSRF amène le serveur à effectuer des requêtes vers des ressources internes ou externes choisies par l''attaquant, pouvant exposer des services internes normalement inaccessibles depuis l''extérieur.', 'avance')
+    (gen_random_uuid(), cat_vuln, 'Qu''est-ce que l''authentification à deux facteurs (2FA) ?', 'Le 2FA ajoute une deuxième vérification en plus du mot de passe : un code SMS, une application d''authentification ou une clé physique. Même si le mot de passe est volé, le compte reste protégé.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Forcer le serveur à effectuer des requêtes vers des ressources choisies par l''attaquant', true, 1),
-    (q_id, 'Intercepter les requêtes entre deux serveurs', false, 2),
-    (q_id, 'Usurper l''identité d''un serveur DNS', false, 3),
-    (q_id, 'Modifier les réponses d''un serveur proxy', false, 4);
+    (q_id, 'Une sécurité qui demande deux preuves d''identité différentes', true, 1),
+    (q_id, 'Utiliser deux mots de passe différents', false, 2),
+    (q_id, 'Se connecter depuis deux appareils', false, 3),
+    (q_id, 'Avoir deux comptes sur le même site', false, 4);
 
   -- V14
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Quel type de faille permet d''uploader un fichier malveillant sur un serveur ?', 'L''upload non restreint permet de téléverser un fichier exécutable (ex : un webshell PHP) en contournant les validations côté client et en exploitant l''absence de contrôle du type de fichier côté serveur.', 'intermediaire')
+    (gen_random_uuid(), cat_vuln, 'Que signifie le sigle "CVE" ?', 'CVE signifie Common Vulnerabilities and Exposures. C''est un système de référence qui donne un identifiant unique à chaque vulnérabilité connue (ex: CVE-2024-1234).', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Unrestricted File Upload', true, 1),
-    (q_id, 'Path Traversal', false, 2),
-    (q_id, 'Open Redirect', false, 3),
-    (q_id, 'Broken Authentication', false, 4);
+    (q_id, 'Common Vulnerabilities and Exposures', true, 1),
+    (q_id, 'Computer Virus Encryption', false, 2),
+    (q_id, 'Certified Virtual Environment', false, 3),
+    (q_id, 'Central Verification Engine', false, 4);
 
   -- V15
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Qu''est-ce qu''un Open Redirect ?', 'Un Open Redirect est une vulnérabilité qui permet de rediriger un utilisateur vers un site arbitraire via un paramètre d''URL, exploitant la confiance envers le domaine légitime pour du phishing.', 'intermediaire')
+    (gen_random_uuid(), cat_vuln, 'Qu''est-ce qu''un keylogger ?', 'Un keylogger est un logiciel ou matériel espion qui enregistre tout ce que tu tapes au clavier (mots de passe, messages, numéros de carte) pour l''envoyer à un pirate.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Une redirection vers un site externe contrôlé par l''attaquant via un paramètre d''URL', true, 1),
-    (q_id, 'Un port ouvert sur un serveur mal configuré', false, 2),
-    (q_id, 'Une session qui reste ouverte indéfiniment', false, 3),
-    (q_id, 'Un formulaire qui accepte tous les types de fichiers', false, 4);
+    (q_id, 'Un programme qui enregistre les frappes du clavier', true, 1),
+    (q_id, 'Un type de clavier sécurisé', false, 2),
+    (q_id, 'Un raccourci clavier', false, 3),
+    (q_id, 'Un logiciel de frappe rapide', false, 4);
 
   -- V16
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Quel est le risque principal d''un stockage de mot de passe en texte clair ?', 'Si un attaquant accède à la base de données, il obtient directement tous les mots de passe. Le hachage avec sel (bcrypt, Argon2) rend les mots de passe inutilisables même en cas de fuite.', 'facile')
+    (gen_random_uuid(), cat_vuln, 'Qu''est-ce qu''un exploit ?', 'Un exploit est un programme ou une technique qui tire parti d''une vulnérabilité pour compromettre un système. C''est l''outil concret utilisé pour exploiter une faille.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'En cas de fuite de la base, tous les mots de passe sont immédiatement compromis', true, 1),
-    (q_id, 'Les mots de passe prennent trop de place en base', false, 2),
-    (q_id, 'L''application sera plus lente', false, 3),
-    (q_id, 'Les utilisateurs ne pourront pas changer leur mot de passe', false, 4);
+    (q_id, 'Un programme qui exploite une faille de sécurité', true, 1),
+    (q_id, 'Un logiciel de protection', false, 2),
+    (q_id, 'Un type de réseau', false, 3),
+    (q_id, 'Un langage de programmation', false, 4);
 
   -- V17
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Qu''est-ce que le clickjacking ?', 'Le clickjacking superpose une page invisible (iframe) au-dessus d''une page visible, amenant l''utilisateur à cliquer sur des éléments cachés, comme un bouton de transfert bancaire.', 'intermediaire')
+    (gen_random_uuid(), cat_vuln, 'Pourquoi les mises à jour logicielles sont-elles importantes pour la sécurité ?', 'Les mises à jour corrigent les vulnérabilités découvertes dans les logiciels. Sans mises à jour, les failles connues restent ouvertes et exploitables par les attaquants.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Piéger l''utilisateur en masquant un élément cliquable sous un contenu visible', true, 1),
-    (q_id, 'Enregistrer les frappes clavier de l''utilisateur', false, 2),
-    (q_id, 'Intercepter les clics pour les rediriger vers un autre serveur', false, 3),
-    (q_id, 'Simuler des clics automatiques via un bot', false, 4);
+    (q_id, 'Elles corrigent les failles de sécurité connues', true, 1),
+    (q_id, 'Elles rendent l''ordinateur plus rapide', false, 2),
+    (q_id, 'Elles changent le design du logiciel', false, 3),
+    (q_id, 'Elles ne servent à rien', false, 4);
 
   -- V18
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Quelle vulnérabilité est exploitée quand l''application affiche des messages d''erreur détaillés contenant des informations sensibles ?', 'La divulgation d''informations via les messages d''erreur peut révéler la structure de la base, les chemins de fichiers, les versions des logiciels, facilitant l''exploitation d''autres vulnérabilités.', 'facile')
+    (gen_random_uuid(), cat_vuln, 'Qu''est-ce qu''un spam ?', 'Le spam est un message non sollicité envoyé en masse, généralement par e-mail. Il peut contenir de la publicité, des arnaques ou des liens vers des malwares.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Information Disclosure (divulgation d''informations)', true, 1),
-    (q_id, 'Buffer Overflow', false, 2),
-    (q_id, 'Race Condition', false, 3),
-    (q_id, 'Broken Access Control', false, 4);
+    (q_id, 'Un message non sollicité envoyé en masse', true, 1),
+    (q_id, 'Un message chiffré', false, 2),
+    (q_id, 'Un e-mail urgent du gouvernement', false, 3),
+    (q_id, 'Un type de virus', false, 4);
 
   -- V19
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Quel type de XSS s''exécute uniquement côté client, sans que le serveur ne traite la payload ?', 'Le XSS basé sur le DOM (DOM-based XSS) manipule le DOM via JavaScript côté client sans que la payload ne soit envoyée au serveur, la rendant invisible aux protections côté serveur.', 'avance')
+    (gen_random_uuid(), cat_vuln, 'Qu''est-ce qu''une faille zero-day ?', 'Une faille zero-day est une vulnérabilité inconnue de l''éditeur du logiciel. Elle est appelée "zero-day" car l''éditeur a eu zéro jour pour la corriger quand elle est exploitée.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'XSS basé sur le DOM (DOM-based)', true, 1),
-    (q_id, 'XSS stocké', false, 2),
-    (q_id, 'XSS réfléchi', false, 3),
-    (q_id, 'XSS universel', false, 4);
+    (q_id, 'Une vulnérabilité inconnue de l''éditeur, pas encore corrigée', true, 1),
+    (q_id, 'Une faille qui ne dure qu''un jour', false, 2),
+    (q_id, 'Un virus très ancien', false, 3),
+    (q_id, 'Une mise à jour du jour zéro', false, 4);
 
   -- V20
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Qu''est-ce qu''une injection SQL en aveugle (blind SQL injection) ?', 'En injection SQL aveugle, l''attaquant n''obtient pas directement les données dans la réponse mais déduit les informations en observant les différences de comportement (temps de réponse, messages d''erreur) de l''application.', 'avance')
+    (gen_random_uuid(), cat_vuln, 'Qu''est-ce que le spoofing ?', 'Le spoofing consiste à se faire passer pour quelqu''un ou quelque chose d''autre (fausse adresse IP, faux e-mail, faux site) pour tromper la victime.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Une injection où les résultats sont déduits par le comportement de l''application', true, 1),
-    (q_id, 'Une injection qui fonctionne sans connexion internet', false, 2),
-    (q_id, 'Une injection qui cible uniquement les utilisateurs non authentifiés', false, 3),
-    (q_id, 'Une injection qui se déclenche après un délai programmé', false, 4);
+    (q_id, 'Usurper l''identité de quelqu''un ou d''un système', true, 1),
+    (q_id, 'Accélérer un réseau', false, 2),
+    (q_id, 'Chiffrer des fichiers', false, 3),
+    (q_id, 'Installer un antivirus', false, 4);
 
   -- V21
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Quel attribut de cookie limite l''envoi du cookie aux requêtes provenant du même site ?', 'L''attribut SameSite restreint l''envoi du cookie aux requêtes provenant du même site. La valeur « Strict » bloque tous les envois cross-site, « Lax » les autorise uniquement pour les navigations de premier niveau.', 'intermediaire')
+    (gen_random_uuid(), cat_vuln, 'Qu''est-ce qu''un botnet ?', 'Un botnet est un réseau d''ordinateurs infectés (zombies) contrôlés à distance par un pirate. Ils servent souvent à lancer des attaques DDoS ou envoyer du spam.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'SameSite', true, 1),
-    (q_id, 'HttpOnly', false, 2),
-    (q_id, 'Secure', false, 3),
-    (q_id, 'Domain', false, 4);
+    (q_id, 'Un réseau d''ordinateurs infectés contrôlés par un pirate', true, 1),
+    (q_id, 'Un réseau de robots physiques', false, 2),
+    (q_id, 'Un logiciel de chat automatique', false, 3),
+    (q_id, 'Un réseau Wi-Fi public', false, 4);
 
   -- V22
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Quel est le risque d''utiliser eval() avec des données utilisateur en JavaScript ?', 'eval() exécute une chaîne de caractères comme du code JavaScript. Si elle contient des données utilisateur non validées, un attaquant peut y injecter du code arbitraire qui sera exécuté dans le contexte de la page.', 'intermediaire')
+    (gen_random_uuid(), cat_vuln, 'Pourquoi ne faut-il pas utiliser le même mot de passe partout ?', 'Si un site est piraté et ton mot de passe est volé, l''attaquant peut l''essayer sur tous tes autres comptes. C''est ce qu''on appelle le "credential stuffing".', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Exécution de code arbitraire injecté par l''attaquant', true, 1),
-    (q_id, 'Ralentissement des performances du navigateur', false, 2),
-    (q_id, 'Corruption de la base de données', false, 3),
-    (q_id, 'Blocage du moteur de rendu CSS', false, 4);
+    (q_id, 'Si un compte est compromis, tous les autres le sont aussi', true, 1),
+    (q_id, 'C''est plus facile à retenir', false, 2),
+    (q_id, 'Cela ralentit l''ordinateur', false, 3),
+    (q_id, 'Les sites web ne l''autorisent pas', false, 4);
 
   -- V23
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Qu''est-ce que la désérialisation non sécurisée ?', 'La désérialisation non sécurisée transforme des données sérialisées non fiables en objets. Un attaquant peut manipuler ces données pour exécuter du code arbitraire, modifier la logique applicative ou provoquer un déni de service.', 'avance')
+    (gen_random_uuid(), cat_vuln, 'Qu''est-ce qu''un certificat SSL/TLS ?', 'Un certificat SSL/TLS est un fichier numérique qui prouve l''identité d''un site web et permet le chiffrement des données. Le cadenas dans la barre d''adresse indique sa présence.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'La transformation de données malveillantes en objets pouvant exécuter du code', true, 1),
-    (q_id, 'Le chiffrement incorrect des données en transit', false, 2),
-    (q_id, 'La suppression accidentelle de données en base', false, 3),
-    (q_id, 'Le stockage de données dans un format incompatible', false, 4);
+    (q_id, 'Un certificat qui authentifie un site web et chiffre les communications', true, 1),
+    (q_id, 'Un diplôme en informatique', false, 2),
+    (q_id, 'Un type de pare-feu', false, 3),
+    (q_id, 'Un logiciel antivirus', false, 4);
 
   -- V24
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Quel est le risque d''un JWT (JSON Web Token) signé avec un algorithme faible comme « none » ?', 'Si le serveur accepte l''algorithme « none », un attaquant peut forger un JWT valide sans signature, modifiant les claims (rôle admin, identité) et contournant l''authentification.', 'avance')
+    (gen_random_uuid(), cat_vuln, 'Qu''est-ce qu''un spyware ?', 'Un spyware (logiciel espion) est un malware qui surveille secrètement l''activité de l''utilisateur : sites visités, mots de passe tapés, fichiers consultés.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Un attaquant peut forger un token sans signature et usurper une identité', true, 1),
-    (q_id, 'Le token expirera plus rapidement', false, 2),
-    (q_id, 'Les données du token ne seront pas chiffrées', false, 3),
-    (q_id, 'Le serveur refusera automatiquement le token', false, 4);
+    (q_id, 'Un logiciel espion qui surveille l''activité de l''utilisateur', true, 1),
+    (q_id, 'Un logiciel de surveillance parentale autorisé', false, 2),
+    (q_id, 'Un outil de développement', false, 3),
+    (q_id, 'Un navigateur web sécurisé', false, 4);
 
   -- V25
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Qu''est-ce que le Broken Access Control selon l''OWASP Top 10 ?', 'Le Broken Access Control regroupe les failles où les restrictions d''accès ne sont pas correctement appliquées, permettant à des utilisateurs d''effectuer des actions au-delà de leurs permissions (IDOR, élévation de privilèges, etc.).', 'intermediaire')
+    (gen_random_uuid(), cat_vuln, 'Qu''est-ce qu''une attaque Man-in-the-Middle (MITM) ?', 'Une attaque MITM se produit quand un pirate se place entre deux personnes qui communiquent, interceptant et pouvant modifier les messages échangés sans que les victimes le sachent.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Les contrôles d''accès ne sont pas correctement appliqués, permettant des actions non autorisées', true, 1),
-    (q_id, 'Les mots de passe ne sont pas assez complexes', false, 2),
-    (q_id, 'Le serveur ne chiffre pas les communications', false, 3),
-    (q_id, 'Les logs ne sont pas correctement configurés', false, 4);
+    (q_id, 'Intercepter les communications entre deux parties', true, 1),
+    (q_id, 'Pirater un serveur web', false, 2),
+    (q_id, 'Envoyer des virus par e-mail', false, 3),
+    (q_id, 'Deviner un mot de passe', false, 4);
 
   -- V26
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Quel est le rôle de l''en-tête X-Frame-Options ?', 'X-Frame-Options empêche une page d''être chargée dans un iframe, une frame ou un object, protégeant ainsi contre le clickjacking. Les valeurs possibles sont DENY et SAMEORIGIN.', 'facile')
+    (gen_random_uuid(), cat_vuln, 'Qu''est-ce qu''un antivirus ?', 'Un antivirus est un logiciel de sécurité qui détecte, bloque et supprime les malwares (virus, trojans, spywares, etc.) sur un ordinateur ou un appareil mobile.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Empêcher le chargement de la page dans un iframe pour contrer le clickjacking', true, 1),
-    (q_id, 'Définir les origines autorisées pour les requêtes CORS', false, 2),
-    (q_id, 'Activer le mode strict de HTTPS', false, 3),
-    (q_id, 'Limiter le nombre de requêtes par seconde', false, 4);
+    (q_id, 'Un logiciel qui détecte et supprime les malwares', true, 1),
+    (q_id, 'Un pare-feu réseau', false, 2),
+    (q_id, 'Un outil de chiffrement', false, 3),
+    (q_id, 'Un navigateur web', false, 4);
 
   -- V27
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Qu''est-ce qu''une attaque de type Mass Assignment ?', 'Le Mass Assignment survient quand une application accepte tous les champs d''une requête pour mettre à jour un objet, permettant à un attaquant de modifier des champs protégés (rôle, statut) en les ajoutant à la requête.', 'avance')
+    (gen_random_uuid(), cat_vuln, 'Qu''est-ce que le CSRF (Cross-Site Request Forgery) ?', 'Le CSRF est une attaque qui force un utilisateur connecté à exécuter une action non voulue sur un site (comme un virement) en cliquant sur un lien piégé.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Modifier des champs non prévus en injectant des paramètres supplémentaires dans la requête', true, 1),
-    (q_id, 'Envoyer massivement des requêtes pour saturer le serveur', false, 2),
-    (q_id, 'Assigner de multiples rôles à un seul utilisateur', false, 3),
-    (q_id, 'Insérer des valeurs en masse dans la base de données', false, 4);
+    (q_id, 'Forcer un utilisateur connecté à effectuer une action à son insu', true, 1),
+    (q_id, 'Créer un faux site web', false, 2),
+    (q_id, 'Voler un mot de passe', false, 3),
+    (q_id, 'Scanner un réseau', false, 4);
 
   -- V28
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Quel est le principal danger de l''inclusion de fichier distant (Remote File Inclusion — RFI) ?', 'Le RFI permet à un attaquant de faire inclure et exécuter un fichier hébergé sur un serveur distant, ce qui peut conduire à l''exécution de code arbitraire sur le serveur vulnérable.', 'avance')
+    (gen_random_uuid(), cat_vuln, 'Que sont les données personnelles ?', 'Les données personnelles sont toute information qui permet d''identifier une personne : nom, adresse, e-mail, numéro de téléphone, adresse IP, photo, etc.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'L''exécution de code distant sur le serveur vulnérable', true, 1),
-    (q_id, 'La saturation de la bande passante', false, 2),
-    (q_id, 'La modification des fichiers de configuration DNS', false, 3),
-    (q_id, 'Le déchiffrement des communications TLS', false, 4);
+    (q_id, 'Toute information qui permet d''identifier une personne', true, 1),
+    (q_id, 'Uniquement le nom et prénom', false, 2),
+    (q_id, 'Les fichiers sur un ordinateur', false, 3),
+    (q_id, 'Les messages envoyés sur les réseaux sociaux', false, 4);
 
   -- V29
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Comment l''attribut Secure d''un cookie protège-t-il les données ?', 'L''attribut Secure indique au navigateur de n''envoyer le cookie que sur des connexions HTTPS, empêchant sa transmission en clair sur HTTP et le protégeant contre l''interception.', 'facile')
+    (gen_random_uuid(), cat_vuln, 'Qu''est-ce qu''un ver informatique (worm) ?', 'Un ver est un malware qui se propage automatiquement d''un ordinateur à l''autre via le réseau, sans avoir besoin d''un fichier hôte ni d''action de l''utilisateur.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Le cookie n''est envoyé que sur des connexions HTTPS', true, 1),
-    (q_id, 'Le cookie est chiffré côté client', false, 2),
-    (q_id, 'Le cookie ne peut pas être lu par JavaScript', false, 3),
-    (q_id, 'Le cookie expire automatiquement après 30 minutes', false, 4);
+    (q_id, 'Un malware qui se propage tout seul via le réseau', true, 1),
+    (q_id, 'Un virus qui détruit les fichiers', false, 2),
+    (q_id, 'Un programme de diagnostic réseau', false, 3),
+    (q_id, 'Un outil de sauvegarde', false, 4);
 
   -- V30
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Quel type de vulnérabilité l''OWASP classe en première position dans son Top 10 2021 ?', 'Depuis 2021, le Broken Access Control occupe la première position du Top 10 OWASP, reflétant la prévalence des failles de contrôle d''accès dans les applications web modernes.', 'intermediaire')
+    (gen_random_uuid(), cat_vuln, 'Qu''est-ce qu''un hash (empreinte numérique) ?', 'Un hash est une chaîne de caractères unique générée à partir de données. Il permet de vérifier l''intégrité d''un fichier ou de stocker des mots de passe de manière sécurisée.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Broken Access Control', true, 1),
-    (q_id, 'Injection', false, 2),
-    (q_id, 'Cross-Site Scripting', false, 3),
-    (q_id, 'Security Misconfiguration', false, 4);
+    (q_id, 'Une empreinte unique calculée à partir de données', true, 1),
+    (q_id, 'Un mot de passe chiffré', false, 2),
+    (q_id, 'Un type de virus', false, 3),
+    (q_id, 'Un protocole réseau', false, 4);
 
   -- V31
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Qu''est-ce que l''injection de template côté serveur (SSTI) ?', 'La SSTI exploite les moteurs de templates (Jinja2, Twig, Freemarker…) quand des entrées utilisateur sont intégrées directement dans un template. L''attaquant peut exécuter du code serveur via des expressions comme {{7*7}}.', 'avance')
+    (gen_random_uuid(), cat_vuln, 'Pourquoi un Wi-Fi public est-il risqué ?', 'Sur un Wi-Fi public non sécurisé, un attaquant peut intercepter les données qui circulent (mots de passe, e-mails). Il est conseillé d''utiliser un VPN sur les réseaux publics.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'L''injection de code dans un moteur de template côté serveur', true, 1),
-    (q_id, 'La modification des templates HTML côté client', false, 2),
-    (q_id, 'L''injection de CSS malveillant dans un fichier de style', false, 3),
-    (q_id, 'Le remplacement des templates par des pages de phishing', false, 4);
+    (q_id, 'Les données peuvent être interceptées par un attaquant', true, 1),
+    (q_id, 'La connexion est trop lente', false, 2),
+    (q_id, 'Il consomme plus de batterie', false, 3),
+    (q_id, 'Il n''y a aucun risque', false, 4);
 
   -- V32
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Quel mécanisme de sécurité HTTP force le navigateur à n''utiliser que des connexions HTTPS ?', 'HSTS (HTTP Strict Transport Security) indique au navigateur, via l''en-tête Strict-Transport-Security, de n''accéder au site qu''en HTTPS pendant une durée définie, bloquant le downgrade vers HTTP.', 'intermediaire')
+    (gen_random_uuid(), cat_vuln, 'Qu''est-ce que le social engineering par téléphone (vishing) ?', 'Le vishing (voice phishing) est une arnaque téléphonique où l''attaquant se fait passer pour une banque, un support technique, etc., pour obtenir des informations confidentielles.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'HSTS (HTTP Strict Transport Security)', true, 1),
-    (q_id, 'CSP (Content Security Policy)', false, 2),
-    (q_id, 'CORS (Cross-Origin Resource Sharing)', false, 3),
-    (q_id, 'OCSP (Online Certificate Status Protocol)', false, 4);
+    (q_id, 'Une arnaque téléphonique pour voler des informations', true, 1),
+    (q_id, 'Un appel de confirmation de commande', false, 2),
+    (q_id, 'Une technique de chiffrement vocal', false, 3),
+    (q_id, 'Un protocole VoIP', false, 4);
 
   -- V33
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Qu''est-ce que le session fixation ?', 'Le session fixation consiste à fixer un identifiant de session avant l''authentification de la victime. Une fois authentifiée, l''attaquant utilise le même identifiant pour accéder au compte de la victime.', 'avance')
+    (gen_random_uuid(), cat_vuln, 'Qu''est-ce qu''un adware ?', 'Un adware est un logiciel qui affiche des publicités indésirables, souvent sous forme de pop-ups. Il peut aussi collecter des données de navigation pour cibler les pubs.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Fixer un identifiant de session connu avant l''authentification de la victime', true, 1),
-    (q_id, 'Bloquer la session d''un utilisateur par déni de service', false, 2),
-    (q_id, 'Prolonger indéfiniment la durée d''une session', false, 3),
-    (q_id, 'Dupliquer une session active vers un autre navigateur', false, 4);
+    (q_id, 'Un logiciel qui affiche des publicités indésirables', true, 1),
+    (q_id, 'Un bloqueur de publicités', false, 2),
+    (q_id, 'Un outil de marketing', false, 3),
+    (q_id, 'Un navigateur web', false, 4);
 
   -- V34
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Quel est le danger principal d''une API REST sans limitation de débit (rate limiting) ?', 'Sans rate limiting, un attaquant peut envoyer un nombre illimité de requêtes, permettant le brute force de mots de passe, l''énumération de ressources, le scraping de données et le déni de service.', 'intermediaire')
+    (gen_random_uuid(), cat_vuln, 'Qu''est-ce qu''une backdoor (porte dérobée) ?', 'Une backdoor est un accès secret à un système qui contourne les mécanismes de sécurité normaux. Un pirate peut l''installer pour revenir facilement plus tard.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Permettre le brute force, l''énumération et le déni de service', true, 1),
-    (q_id, 'Empêcher le mise en cache des réponses', false, 2),
-    (q_id, 'Ralentir les utilisateurs légitimes', false, 3),
-    (q_id, 'Augmenter la taille des logs serveur', false, 4);
+    (q_id, 'Un accès secret qui contourne la sécurité normale', true, 1),
+    (q_id, 'Une sauvegarde de sécurité', false, 2),
+    (q_id, 'Une porte de sortie d''urgence du réseau', false, 3),
+    (q_id, 'Un pare-feu secondaire', false, 4);
 
   -- V35
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Qu''est-ce que l''injection NoSQL ?', 'L''injection NoSQL cible les bases de données non relationnelles (MongoDB, CouchDB) en injectant des opérateurs de requête (ex : $gt, $ne) dans les paramètres, contournant l''authentification ou exfiltrant des données.', 'avance')
+    (gen_random_uuid(), cat_vuln, 'Qu''est-ce que le credential stuffing ?', 'Le credential stuffing consiste à utiliser des identifiants volés sur un site (lors d''une fuite) pour essayer de se connecter automatiquement à d''autres sites.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'L''injection d''opérateurs de requête dans une base de données non relationnelle', true, 1),
-    (q_id, 'L''injection SQL dans une base MongoDB', false, 2),
-    (q_id, 'Le refus de se connecter à une base SQL', false, 3),
-    (q_id, 'La suppression de la base de données sans commande SQL', false, 4);
+    (q_id, 'Réutiliser des identifiants volés pour accéder à d''autres comptes', true, 1),
+    (q_id, 'Créer de faux comptes', false, 2),
+    (q_id, 'Deviner un mot de passe', false, 3),
+    (q_id, 'Chiffrer des identifiants', false, 4);
 
   -- V36
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_vuln, 'Quel est le risque d''une mauvaise configuration des en-têtes CORS avec Access-Control-Allow-Origin: * ?', 'Autoriser toutes les origines (*) permet à n''importe quel site de faire des requêtes vers l''API depuis le navigateur d''un utilisateur, exposant potentiellement les données sensibles de l''utilisateur authentifié.', 'intermediaire')
+    (gen_random_uuid(), cat_vuln, 'Qu''est-ce qu''une fuite de données (data breach) ?', 'Une fuite de données se produit quand des informations confidentielles (mots de passe, données personnelles) sont accédées ou volées par des personnes non autorisées.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'N''importe quel site peut accéder aux données de l''API depuis le navigateur de l''utilisateur', true, 1),
-    (q_id, 'Le serveur sera ralenti par trop de requêtes', false, 2),
-    (q_id, 'Les cookies ne seront plus envoyés', false, 3),
-    (q_id, 'Le certificat TLS sera invalidé', false, 4);
+    (q_id, 'Un accès non autorisé à des données confidentielles', true, 1),
+    (q_id, 'Une panne de serveur', false, 2),
+    (q_id, 'Une sauvegarde ratée', false, 3),
+    (q_id, 'Un problème de connexion Internet', false, 4);
 
   -- ═══════════════════════════════════════════════════════
-  --  DOMAINE 3 : Méthodologie et outils (26 questions)
+  --  DOMAINE 3 : Méthodologie du Pentest (26 questions)
   -- ═══════════════════════════════════════════════════════
 
   -- M1
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_meth, 'Quelle est la première phase d''un test de pénétration selon la méthodologie standard ?', 'La reconnaissance (ou information gathering) est la première étape. Elle consiste à collecter un maximum d''informations sur la cible (domaines, IP, technologies, employés) avant toute tentative d''exploitation.', 'facile')
+    (gen_random_uuid(), cat_meth, 'Qu''est-ce qu''un test d''intrusion (pentest) ?', 'Un pentest est une simulation d''attaque autorisée contre un système informatique pour trouver ses vulnérabilités avant qu''un vrai pirate ne les exploite.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Reconnaissance et collecte d''informations', true, 1),
-    (q_id, 'Exploitation des vulnérabilités', false, 2),
-    (q_id, 'Rapport final', false, 3),
-    (q_id, 'Maintien d''accès', false, 4);
+    (q_id, 'Une simulation d''attaque autorisée pour trouver les failles', true, 1),
+    (q_id, 'Une attaque illégale contre un système', false, 2),
+    (q_id, 'L''installation d''un antivirus', false, 3),
+    (q_id, 'La configuration d''un pare-feu', false, 4);
 
   -- M2
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_meth, 'Quel outil est principalement utilisé pour intercepter et modifier les requêtes HTTP entre le navigateur et le serveur ?', 'Burp Suite est un proxy d''interception qui permet de capturer, analyser et modifier les requêtes et réponses HTTP en temps réel, outil incontournable du pentest web.', 'facile')
+    (gen_random_uuid(), cat_meth, 'Quelle est la première étape d''un pentest ?', 'La reconnaissance (ou collecte d''informations) est la première étape. On rassemble un maximum d''informations sur la cible avant de passer à l''action.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Burp Suite', true, 1),
-    (q_id, 'Nmap', false, 2),
-    (q_id, 'Wireshark', false, 3),
-    (q_id, 'Metasploit', false, 4);
+    (q_id, 'La reconnaissance (collecte d''informations)', true, 1),
+    (q_id, 'L''exploitation des failles', false, 2),
+    (q_id, 'La rédaction du rapport', false, 3),
+    (q_id, 'L''installation d''outils', false, 4);
 
   -- M3
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_meth, 'À quoi sert l''outil Nmap dans un test de pénétration ?', 'Nmap (Network Mapper) est un scanner de ports et de services réseau. Il identifie les ports ouverts, les services actifs et leurs versions, et peut détecter le système d''exploitation.', 'facile')
+    (gen_random_uuid(), cat_meth, 'Qu''est-ce qu''un hacker éthique (white hat) ?', 'Un hacker éthique est un expert en sécurité qui utilise ses compétences pour trouver et signaler les failles de sécurité de manière légale et autorisée.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Scanner les ports ouverts, les services et le système d''exploitation d''une cible', true, 1),
-    (q_id, 'Exploiter les vulnérabilités découvertes', false, 2),
-    (q_id, 'Générer des rapports de pentest', false, 3),
-    (q_id, 'Chiffrer les communications réseau', false, 4);
+    (q_id, 'Un expert qui teste la sécurité de manière légale et autorisée', true, 1),
+    (q_id, 'Un pirate qui vole des données', false, 2),
+    (q_id, 'Un développeur web', false, 3),
+    (q_id, 'Un administrateur réseau', false, 4);
 
   -- M4
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_meth, 'Quelle est la différence entre un test de pénétration en boîte noire et en boîte blanche ?', 'En boîte noire, le pentester n''a aucune information interne sur la cible (comme un attaquant externe). En boîte blanche, il a accès au code source, à l''architecture et aux identifiants, permettant un audit plus approfondi.', 'facile')
+    (gen_random_uuid(), cat_meth, 'Qu''est-ce qu''un black hat ?', 'Un black hat est un pirate informatique malveillant qui exploite les failles de sécurité de manière illégale pour son propre profit ou pour causer des dommages.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Boîte noire : aucune information interne ; boîte blanche : accès complet au code et à l''infrastructure', true, 1),
-    (q_id, 'Boîte noire : test automatisé ; boîte blanche : test manuel', false, 2),
-    (q_id, 'Boîte noire : réseau interne ; boîte blanche : réseau externe', false, 3),
-    (q_id, 'Il n''y a pas de différence significative', false, 4);
+    (q_id, 'Un pirate qui agit de manière illégale et malveillante', true, 1),
+    (q_id, 'Un expert en sécurité légal', false, 2),
+    (q_id, 'Un type de chapeau', false, 3),
+    (q_id, 'Un logiciel de hacking', false, 4);
 
   -- M5
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_meth, 'Quel module de Burp Suite est utilisé pour modifier automatiquement les requêtes et tester des payloads en série ?', 'L''Intruder de Burp Suite permet de configurer des attaques automatisées en remplaçant des paramètres par des listes de payloads, utile pour le fuzzing, le brute force et l''injection.', 'intermediaire')
+    (gen_random_uuid(), cat_meth, 'Qu''est-ce qu''un scope dans un pentest ?', 'Le scope définit les limites du test : quels systèmes, applications ou réseaux peuvent être testés, et lesquels sont interdits. Il est défini avant le début du test.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Intruder', true, 1),
-    (q_id, 'Repeater', false, 2),
-    (q_id, 'Decoder', false, 3),
-    (q_id, 'Comparer', false, 4);
+    (q_id, 'Les limites et le périmètre autorisé du test', true, 1),
+    (q_id, 'Un outil de scan', false, 2),
+    (q_id, 'Un type de vulnérabilité', false, 3),
+    (q_id, 'Un rapport final', false, 4);
 
   -- M6
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_meth, 'Qu''est-ce que la reconnaissance passive ?', 'La reconnaissance passive consiste à collecter des informations sur la cible sans interagir directement avec ses systèmes (OSINT, archives web, DNS public, réseaux sociaux), ne laissant aucune trace.', 'facile')
+    (gen_random_uuid(), cat_meth, 'Pourquoi un pentest nécessite-t-il une autorisation écrite ?', 'Sans autorisation, tester la sécurité d''un système est illégal (piratage). L''autorisation écrite protège le pentester et définit ce qui est permis.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Collecter des informations sans interagir directement avec les systèmes de la cible', true, 1),
-    (q_id, 'Scanner les ports de la cible discrètement', false, 2),
-    (q_id, 'Exploiter des vulnérabilités sans être détecté', false, 3),
-    (q_id, 'Attendre que la cible expose des vulnérabilités', false, 4);
+    (q_id, 'Sans autorisation, c''est considéré comme du piratage illégal', true, 1),
+    (q_id, 'C''est juste une formalité administrative', false, 2),
+    (q_id, 'Pour que le client paie la facture', false, 3),
+    (q_id, 'Ce n''est pas obligatoire', false, 4);
 
   -- M7
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_meth, 'Quel outil automatisé est spécialisé dans la détection et l''exploitation des injections SQL ?', 'sqlmap est un outil open source qui automatise la détection et l''exploitation des injections SQL. Il supporte divers SGBD, peut extraire des données, accéder au système de fichiers et exécuter des commandes.', 'intermediaire')
+    (gen_random_uuid(), cat_meth, 'Qu''est-ce que Nmap ?', 'Nmap (Network Mapper) est un outil gratuit de scan réseau. Il permet de découvrir les appareils sur un réseau, les ports ouverts et les services qui y tournent.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'sqlmap', true, 1),
-    (q_id, 'Nikto', false, 2),
-    (q_id, 'Dirb', false, 3),
-    (q_id, 'Hydra', false, 4);
+    (q_id, 'Un outil de scan réseau pour découvrir les ports et services', true, 1),
+    (q_id, 'Un navigateur web sécurisé', false, 2),
+    (q_id, 'Un système d''exploitation', false, 3),
+    (q_id, 'Un antivirus', false, 4);
 
   -- M8
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_meth, 'À quoi sert l''outil Dirb (ou Dirbuster/Gobuster) ?', 'Ces outils de brute force de répertoires tentent de découvrir des fichiers et dossiers cachés sur un serveur web en testant une liste de noms courants, révélant des pages d''administration, des backups ou des fichiers sensibles.', 'intermediaire')
+    (gen_random_uuid(), cat_meth, 'Qu''est-ce que Kali Linux ?', 'Kali Linux est un système d''exploitation basé sur Linux, conçu pour les tests de sécurité. Il contient des centaines d''outils de pentest préinstallés.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Découvrir des fichiers et répertoires cachés sur un serveur web', true, 1),
-    (q_id, 'Scanner les vulnérabilités réseau', false, 2),
-    (q_id, 'Intercepter les requêtes HTTP', false, 3),
-    (q_id, 'Cracker les mots de passe hashés', false, 4);
+    (q_id, 'Un système d''exploitation dédié aux tests de sécurité', true, 1),
+    (q_id, 'Un antivirus', false, 2),
+    (q_id, 'Un navigateur web', false, 3),
+    (q_id, 'Un service cloud', false, 4);
 
   -- M9
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_meth, 'Quel outil est utilisé pour effectuer des attaques par brute force sur des services d''authentification ?', 'Hydra est un outil de brute force en ligne qui supporte de nombreux protocoles (HTTP, FTP, SSH, SMTP, etc.) pour tester des combinaisons identifiant/mot de passe sur des services d''authentification.', 'intermediaire')
+    (gen_random_uuid(), cat_meth, 'Qu''est-ce que la reconnaissance passive ?', 'La reconnaissance passive consiste à collecter des informations sur une cible sans interagir directement avec elle : recherche Google, WHOIS, réseaux sociaux, etc.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Hydra', true, 1),
-    (q_id, 'John the Ripper', false, 2),
-    (q_id, 'Hashcat', false, 3),
-    (q_id, 'Aircrack-ng', false, 4);
+    (q_id, 'Collecter des informations sans toucher directement le système cible', true, 1),
+    (q_id, 'Scanner les ports d''un serveur', false, 2),
+    (q_id, 'Exploiter une faille', false, 3),
+    (q_id, 'Installer un logiciel espion', false, 4);
 
   -- M10
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_meth, 'Qu''est-ce que le module Repeater dans Burp Suite ?', 'Le Repeater permet de renvoyer manuellement une requête HTTP modifiée et d''observer la réponse, idéal pour affiner une payload d''exploitation ou tester des variantes sans relancer une attaque complète.', 'facile')
+    (gen_random_uuid(), cat_meth, 'Qu''est-ce qu''un rapport de pentest ?', 'Un rapport de pentest est un document qui détaille les vulnérabilités trouvées, leur niveau de gravité, les preuves et les recommandations pour les corriger.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Un outil pour renvoyer et modifier manuellement des requêtes HTTP', true, 1),
-    (q_id, 'Un scanner automatique de vulnérabilités', false, 2),
-    (q_id, 'Un outil de décodage d''encodages', false, 3),
-    (q_id, 'Un module de génération de rapports', false, 4);
+    (q_id, 'Un document détaillant les failles trouvées et comment les corriger', true, 1),
+    (q_id, 'Un logiciel de scan', false, 2),
+    (q_id, 'Un contrat entre le pentester et le client', false, 3),
+    (q_id, 'Un plan de réseau', false, 4);
 
   -- M11
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_meth, 'Qu''est-ce que le CVSS (Common Vulnerability Scoring System) ?', 'Le CVSS est un système de notation standardisé qui évalue la gravité des vulnérabilités de sécurité sur une échelle de 0 à 10, en tenant compte de facteurs comme le vecteur d''attaque, la complexité et l''impact.', 'intermediaire')
+    (gen_random_uuid(), cat_meth, 'Que signifie "OWASP" ?', 'OWASP signifie Open Web Application Security Project. C''est une organisation qui publie des guides et un classement des 10 vulnérabilités web les plus courantes (OWASP Top 10).', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Un système de notation standardisé de la gravité des vulnérabilités (0 à 10)', true, 1),
-    (q_id, 'Un logiciel de scan de vulnérabilités', false, 2),
-    (q_id, 'Un protocole de communication sécurisé', false, 3),
-    (q_id, 'Une certification en cybersécurité', false, 4);
+    (q_id, 'Open Web Application Security Project', true, 1),
+    (q_id, 'Online Web Attack Security Platform', false, 2),
+    (q_id, 'Official Windows Application Security Policy', false, 3),
+    (q_id, 'Open Wireless Access Security Protocol', false, 4);
 
   -- M12
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_meth, 'Quel référentiel est largement utilisé pour classer les vulnérabilités web les plus critiques ?', 'L''OWASP Top 10 est un document de sensibilisation qui liste les dix risques de sécurité les plus critiques pour les applications web, mis à jour régulièrement pour refléter les menaces actuelles.', 'facile')
+    (gen_random_uuid(), cat_meth, 'Qu''est-ce qu''un scan de ports ?', 'Un scan de ports consiste à vérifier quels ports sont ouverts sur un serveur. Chaque port ouvert correspond potentiellement à un service qui peut être vulnérable.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'OWASP Top 10', true, 1),
-    (q_id, 'NIST Framework', false, 2),
-    (q_id, 'ISO 27001', false, 3),
-    (q_id, 'PCI DSS', false, 4);
+    (q_id, 'Vérifier quels ports sont ouverts sur un serveur', true, 1),
+    (q_id, 'Installer un pare-feu', false, 2),
+    (q_id, 'Créer un nouveau port réseau', false, 3),
+    (q_id, 'Désactiver les ports USB', false, 4);
 
   -- M13
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_meth, 'Que contient un rapport de test de pénétration professionnel ?', 'Un rapport complet inclut un résumé exécutif, la méthodologie utilisée, les vulnérabilités classées par criticité avec les preuves d''exploitation (PoC), et les recommandations de remédiation.', 'intermediaire')
+    (gen_random_uuid(), cat_meth, 'Qu''est-ce que Burp Suite ?', 'Burp Suite est un outil de test de sécurité web. Il permet d''intercepter, d''analyser et de modifier les requêtes HTTP entre le navigateur et le serveur.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Résumé exécutif, méthodologie, vulnérabilités avec preuves et recommandations', true, 1),
-    (q_id, 'Uniquement la liste des outils utilisés', false, 2),
-    (q_id, 'Le code source complet de l''application', false, 3),
-    (q_id, 'Les mots de passe découverts en texte clair', false, 4);
+    (q_id, 'Un outil pour intercepter et analyser les requêtes web', true, 1),
+    (q_id, 'Un antivirus', false, 2),
+    (q_id, 'Un système d''exploitation', false, 3),
+    (q_id, 'Un service de messagerie', false, 4);
 
   -- M14
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_meth, 'Quelle commande Nmap effectue un scan SYN furtif (stealth) ?', 'Le scan SYN (-sS) envoie un paquet SYN sans terminer le handshake TCP (pas d''ACK final), ce qui le rend moins susceptible d''être enregistré dans les logs par rapport à un scan connect (-sT).', 'intermediaire')
+    (gen_random_uuid(), cat_meth, 'Qu''est-ce qu''un pentest en boîte noire (black box) ?', 'En pentest boîte noire, le testeur n''a aucune information préalable sur le système. Il agit comme un attaquant externe qui découvre tout par lui-même.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'nmap -sS', true, 1),
-    (q_id, 'nmap -sT', false, 2),
-    (q_id, 'nmap -sV', false, 3),
-    (q_id, 'nmap -O', false, 4);
+    (q_id, 'Un test où le pentester n''a aucune information sur le système', true, 1),
+    (q_id, 'Un test avec un accès complet au code source', false, 2),
+    (q_id, 'Un test uniquement sur les serveurs physiques', false, 3),
+    (q_id, 'Un test effectué de nuit', false, 4);
 
   -- M15
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_meth, 'Qu''est-ce que le fuzzing dans le contexte du test de sécurité ?', 'Le fuzzing consiste à envoyer des données aléatoires, invalides ou inattendues aux entrées d''une application pour provoquer des comportements imprévus, crashes ou révéler des vulnérabilités.', 'intermediaire')
+    (gen_random_uuid(), cat_meth, 'Qu''est-ce qu''un pentest en boîte blanche (white box) ?', 'En pentest boîte blanche, le testeur a accès à toutes les informations : code source, architecture, identifiants. Cela permet un test plus approfondi.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Envoyer des données aléatoires ou malformées pour découvrir des bugs et vulnérabilités', true, 1),
-    (q_id, 'Rendre le code source illisible pour protéger la propriété intellectuelle', false, 2),
-    (q_id, 'Brouiller les communications réseau pour éviter l''interception', false, 3),
-    (q_id, 'Analyser la logique métier de l''application', false, 4);
+    (q_id, 'Un test où le pentester a un accès complet aux informations du système', true, 1),
+    (q_id, 'Un test sans aucune information', false, 2),
+    (q_id, 'Un test uniquement sur les pages web blanches', false, 3),
+    (q_id, 'Un test réalisé par un white hat uniquement', false, 4);
 
   -- M16
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_meth, 'Quel outil est utilisé pour l''analyse statique des dépendances d''un projet afin de trouver des vulnérabilités connues ?', 'Des outils comme npm audit, Snyk ou OWASP Dependency-Check analysent les bibliothèques utilisées dans un projet et les comparent aux bases de données de vulnérabilités connues (CVE).', 'intermediaire')
+    (gen_random_uuid(), cat_meth, 'Qu''est-ce que le WHOIS ?', 'WHOIS est un service qui permet de rechercher les informations d''enregistrement d''un nom de domaine : propriétaire, date de création, serveurs DNS, etc.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'OWASP Dependency-Check ou npm audit', true, 1),
-    (q_id, 'Burp Suite', false, 2),
-    (q_id, 'Wireshark', false, 3),
-    (q_id, 'Metasploit', false, 4);
+    (q_id, 'Un service pour consulter les informations d''un nom de domaine', true, 1),
+    (q_id, 'Un moteur de recherche', false, 2),
+    (q_id, 'Un réseau social', false, 3),
+    (q_id, 'Un outil de piratage', false, 4);
 
   -- M17
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_meth, 'Qu''est-ce qu''un CVE (Common Vulnerabilities and Exposures) ?', 'Un CVE est un identifiant unique (ex : CVE-2021-44228) attribué à une vulnérabilité de sécurité connue, permettant de la référencer de manière standardisée dans la communauté.', 'facile')
+    (gen_random_uuid(), cat_meth, 'Qu''est-ce que l''escalade de privilèges ?', 'L''escalade de privilèges est une technique où un attaquant obtient des droits d''accès supérieurs à ceux qu''il avait initialement, par exemple passer d''utilisateur simple à administrateur.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Un identifiant unique pour une vulnérabilité de sécurité connue', true, 1),
-    (q_id, 'Un type de virus informatique', false, 2),
-    (q_id, 'Un certificat de validation de sécurité', false, 3),
-    (q_id, 'Un outil de scan de vulnérabilités', false, 4);
+    (q_id, 'Obtenir des droits d''accès plus élevés que prévu', true, 1),
+    (q_id, 'Monter dans la hiérarchie d''une entreprise', false, 2),
+    (q_id, 'Augmenter la vitesse du réseau', false, 3),
+    (q_id, 'Ajouter des utilisateurs au système', false, 4);
 
   -- M18
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_meth, 'Quel est le rôle d''un WAF (Web Application Firewall) ?', 'Un WAF analyse et filtre le trafic HTTP entre les clients et l''application web, détectant et bloquant les attaques courantes (injection SQL, XSS, etc.) en temps réel selon des règles prédéfinies.', 'intermediaire')
+    (gen_random_uuid(), cat_meth, 'Qu''est-ce qu''un scanner de vulnérabilités ?', 'Un scanner de vulnérabilités est un outil automatique qui analyse un système pour identifier les failles de sécurité connues. Exemples : Nessus, OpenVAS.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Filtrer le trafic HTTP pour bloquer les attaques web courantes', true, 1),
-    (q_id, 'Chiffrer les données en base de données', false, 2),
-    (q_id, 'Gérer les certificats TLS du serveur', false, 3),
-    (q_id, 'Scanner les ports ouverts du réseau', false, 4);
+    (q_id, 'Un outil qui recherche automatiquement les failles connues', true, 1),
+    (q_id, 'Un antivirus', false, 2),
+    (q_id, 'Un scanner physique de documents', false, 3),
+    (q_id, 'Un outil de développement web', false, 4);
 
   -- M19
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_meth, 'Qu''est-ce que la méthodologie PTES (Penetration Testing Execution Standard) ?', 'PTES est un standard qui définit 7 phases pour un test de pénétration : pré-engagement, collecte de renseignements, modélisation des menaces, analyse de vulnérabilités, exploitation, post-exploitation, rapport.', 'avance')
+    (gen_random_uuid(), cat_meth, 'Qu''est-ce que la surface d''attaque ?', 'La surface d''attaque est l''ensemble des points d''entrée qu''un attaquant pourrait utiliser : ports ouverts, formulaires web, API, applications exposées sur Internet.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Un standard en 7 phases couvrant le cycle complet d''un test de pénétration', true, 1),
-    (q_id, 'Un outil de scan de vulnérabilités réseau', false, 2),
-    (q_id, 'Un programme de certification pour les pentesters', false, 3),
-    (q_id, 'Un protocole de chiffrement des rapports de pentest', false, 4);
+    (q_id, 'L''ensemble des points d''entrée potentiels pour un attaquant', true, 1),
+    (q_id, 'La taille du disque dur', false, 2),
+    (q_id, 'Le nombre d''employés d''une entreprise', false, 3),
+    (q_id, 'La zone géographique du serveur', false, 4);
 
   -- M20
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_meth, 'Quel est l''intérêt d''utiliser une wordlist personnalisée lors d''un test de pénétration ?', 'Une wordlist personnalisée contient des termes spécifiques à la cible (noms de produits, jargon interne, conventions de nommage) et augmente les chances de découvrir des chemins, identifiants ou mots de passe pertinents.', 'intermediaire')
+    (gen_random_uuid(), cat_meth, 'Qu''est-ce qu''un grey hat ?', 'Un grey hat est un hacker qui se situe entre le white hat et le black hat. Il peut trouver des failles sans autorisation mais les signale ensuite au lieu de les exploiter.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Cibler des termes spécifiques à l''environnement de la cible pour améliorer les résultats', true, 1),
-    (q_id, 'Réduire le temps d''exécution du scan', false, 2),
-    (q_id, 'Éviter les faux positifs', false, 3),
-    (q_id, 'Se conformer aux exigences légales', false, 4);
+    (q_id, 'Un hacker qui agit sans autorisation mais sans intention malveillante', true, 1),
+    (q_id, 'Un débutant en sécurité', false, 2),
+    (q_id, 'Un expert certifié', false, 3),
+    (q_id, 'Un employé du gouvernement', false, 4);
 
   -- M21
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_meth, 'Qu''est-ce que le Google Dorking dans le cadre de la reconnaissance ?', 'Le Google Dorking utilise des opérateurs de recherche avancés (site:, filetype:, intitle:, inurl:) pour trouver des informations sensibles indexées par Google : fichiers exposés, pages de login, répertoires ouverts.', 'facile')
+    (gen_random_uuid(), cat_meth, 'Qu''est-ce qu''un pentest en boîte grise (grey box) ?', 'En pentest boîte grise, le testeur a des informations partielles sur le système (par exemple des identifiants utilisateur), simulant un attaquant interne ou un utilisateur malveillant.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Utiliser des opérateurs de recherche avancés Google pour trouver des informations sensibles', true, 1),
-    (q_id, 'Pirater les serveurs de Google', false, 2),
-    (q_id, 'Scanner les résultats de recherche pour des vulnérabilités', false, 3),
-    (q_id, 'Modifier les résultats de recherche Google', false, 4);
+    (q_id, 'Un test avec des informations partielles sur le système', true, 1),
+    (q_id, 'Un test sans aucune information', false, 2),
+    (q_id, 'Un test avec toutes les informations', false, 3),
+    (q_id, 'Un test réalisé en zone grise légale', false, 4);
 
   -- M22
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_meth, 'Quel outil de Kali Linux est spécialisé dans l''énumération des sous-domaines ?', 'Sublist3r est un outil Python qui énumère les sous-domaines d''un domaine cible en interrogeant plusieurs moteurs de recherche, des bases DNS et des sources OSINT.', 'intermediaire')
+    (gen_random_uuid(), cat_meth, 'Qu''est-ce que Metasploit ?', 'Metasploit est un framework (outil) de pentest très populaire. Il contient une base de données d''exploits et de payloads pour tester les vulnérabilités des systèmes.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Sublist3r', true, 1),
-    (q_id, 'Aircrack-ng', false, 2),
-    (q_id, 'BeEF', false, 3),
-    (q_id, 'Maltego', false, 4);
+    (q_id, 'Un framework de pentest avec des exploits intégrés', true, 1),
+    (q_id, 'Un système d''exploitation', false, 2),
+    (q_id, 'Un serveur web', false, 3),
+    (q_id, 'Un logiciel de bureautique', false, 4);
 
   -- M23
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_meth, 'Quel est le rôle de Nikto dans un test de sécurité web ?', 'Nikto est un scanner de vulnérabilités web open source qui identifie les fichiers dangereux, les configurations incorrectes, les logiciels obsolètes et les problèmes de sécurité courants sur un serveur web.', 'facile')
+    (gen_random_uuid(), cat_meth, 'Qu''est-ce qu''un payload en cybersécurité ?', 'Un payload est le code malveillant qui s''exécute sur le système de la victime après l''exploitation d''une faille. Il peut ouvrir un accès distant, voler des données, etc.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Scanner un serveur web à la recherche de vulnérabilités et configurations dangereuses', true, 1),
-    (q_id, 'Intercepter les requêtes HTTP', false, 2),
-    (q_id, 'Effectuer des attaques de brute force', false, 3),
-    (q_id, 'Analyser le trafic réseau', false, 4);
+    (q_id, 'Le code qui s''exécute après l''exploitation d''une faille', true, 1),
+    (q_id, 'Le poids d''un fichier', false, 2),
+    (q_id, 'Un type de réseau', false, 3),
+    (q_id, 'Un format de données', false, 4);
 
   -- M24
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_meth, 'Qu''est-ce qu''un scope dans un engagement de test de pénétration ?', 'Le scope définit précisément ce qui est autorisé et interdit dans le test : les systèmes ciblés, les adresses IP, les types d''attaques permises, les plages horaires et les limitations, formalisé dans un contrat.', 'facile')
+    (gen_random_uuid(), cat_meth, 'Qu''est-ce que le Google Dorking ?', 'Le Google Dorking utilise des opérateurs de recherche avancés dans Google pour trouver des informations sensibles exposées accidentellement : fichiers, pages d''admin, mots de passe.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Le périmètre qui délimite les cibles, méthodes et restrictions autorisées', true, 1),
-    (q_id, 'L''outil principal utilisé pendant le test', false, 2),
-    (q_id, 'Le budget alloué au test', false, 3),
-    (q_id, 'La durée maximale du test', false, 4);
+    (q_id, 'Utiliser des recherches Google avancées pour trouver des infos exposées', true, 1),
+    (q_id, 'Pirater le moteur de recherche Google', false, 2),
+    (q_id, 'Créer un faux Google', false, 3),
+    (q_id, 'Bloquer les résultats Google', false, 4);
 
   -- M25
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_meth, 'Quel est l''avantage d''un test de pénétration en boîte grise ?', 'Le test en boîte grise combine le réalisme de la boîte noire avec l''efficacité de la boîte blanche : le pentester dispose d''informations partielles (identifiants, documentation limitée), simulant un attaquant ayant un accès initial.', 'intermediaire')
+    (gen_random_uuid(), cat_meth, 'Pourquoi documente-t-on chaque étape d''un pentest ?', 'Documenter permet de prouver ce qui a été trouvé, de reproduire les résultats, et de fournir au client un rapport clair avec des recommandations pour corriger les failles.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Combiner réalisme et efficacité avec un accès partiel aux informations de la cible', true, 1),
-    (q_id, 'Tester uniquement les vulnérabilités réseau', false, 2),
-    (q_id, 'Éliminer le besoin d''un contrat de périmètre', false, 3),
-    (q_id, 'Automatiser entièrement le processus de test', false, 4);
+    (q_id, 'Pour prouver les résultats et aider le client à corriger les failles', true, 1),
+    (q_id, 'Ce n''est pas nécessaire', false, 2),
+    (q_id, 'Pour impressionner le client', false, 3),
+    (q_id, 'Uniquement pour des raisons juridiques', false, 4);
 
   -- M26
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_meth, 'Qu''est-ce qu''un webshell ?', 'Un webshell est un script malveillant (PHP, ASP, JSP…) déposé sur un serveur web qui fournit une interface de commande à distance, permettant à l''attaquant d''exécuter des commandes système via le navigateur.', 'intermediaire')
+    (gen_random_uuid(), cat_meth, 'Qu''est-ce qu''un bug bounty ?', 'Un bug bounty est un programme où une entreprise offre des récompenses financières aux hackers éthiques qui trouvent et signalent des vulnérabilités dans ses systèmes.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Un script déposé sur un serveur web qui permet l''exécution de commandes à distance', true, 1),
-    (q_id, 'Un navigateur web sécurisé pour les pentesters', false, 2),
-    (q_id, 'Un terminal virtuel intégré au navigateur', false, 3),
-    (q_id, 'Un pare-feu applicatif en ligne de commande', false, 4);
+    (q_id, 'Un programme de récompenses pour la découverte de failles', true, 1),
+    (q_id, 'Un virus informatique', false, 2),
+    (q_id, 'Un concours de programmation', false, 3),
+    (q_id, 'Une assurance cybersécurité', false, 4);
 
   -- ═══════════════════════════════════════════════════════
-  --  DOMAINE 4 : IA, éthique et sécurité (16 questions)
+  --  DOMAINE 4 : IA et Éthique en cybersécurité (16 questions)
   -- ═══════════════════════════════════════════════════════
 
-  -- I1
+  -- IA1
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_ia, 'Qu''est-ce que le pentesting éthique (ethical hacking) ?', 'Le pentesting éthique consiste à tester la sécurité d''un système avec l''autorisation écrite du propriétaire, dans le but d''identifier et corriger les vulnérabilités avant qu''un attaquant malveillant ne les exploite.', 'facile')
+    (gen_random_uuid(), cat_ia, 'Que signifie "IA" (Intelligence Artificielle) ?', 'L''intelligence artificielle désigne des programmes informatiques capables de réaliser des tâches qui nécessitent normalement l''intelligence humaine : reconnaissance d''images, traduction, décision.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Tester la sécurité d''un système avec l''autorisation du propriétaire pour en améliorer la protection', true, 1),
-    (q_id, 'Pirater des systèmes pour en tirer un profit financier', false, 2),
-    (q_id, 'Utiliser des outils automatisés sans comprendre leur fonctionnement', false, 3),
-    (q_id, 'Publier les vulnérabilités découvertes sans prévenir le propriétaire', false, 4);
+    (q_id, 'Des programmes capables de réaliser des tâches nécessitant l''intelligence humaine', true, 1),
+    (q_id, 'Des robots physiques uniquement', false, 2),
+    (q_id, 'Internet Avancé', false, 3),
+    (q_id, 'Un type de réseau informatique', false, 4);
 
-  -- I2
+  -- IA2
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_ia, 'Quel document juridique encadre un test de pénétration autorisé ?', 'L''autorisation de test (ou lettre de mission / convention de test) est un contrat signé entre le pentester et le client qui définit le périmètre, les conditions et dégage la responsabilité juridique du testeur.', 'facile')
+    (gen_random_uuid(), cat_ia, 'Comment l''IA peut-elle aider en cybersécurité ?', 'L''IA peut détecter des comportements anormaux sur un réseau, identifier des malwares inconnus, analyser des logs en masse et réagir plus vite que les humains face aux menaces.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Une autorisation de test signée (lettre de mission / convention)', true, 1),
-    (q_id, 'Un simple accord verbal', false, 2),
-    (q_id, 'La politique de confidentialité du site web', false, 3),
-    (q_id, 'Les conditions générales d''utilisation', false, 4);
-
-  -- I3
-  INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_ia, 'Comment l''IA peut-elle être utilisée de manière bénéfique en cybersécurité ?', 'L''IA peut analyser de vastes volumes de données de logs, détecter des anomalies et des menaces en temps réel, automatiser la réponse aux incidents et identifier des patterns d''attaque invisibles pour un analyste humain.', 'facile')
-    RETURNING id INTO q_id;
-  INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Détecter des anomalies et des menaces en temps réel dans de grands volumes de données', true, 1),
+    (q_id, 'Détecter des menaces et comportements anormaux automatiquement', true, 1),
     (q_id, 'Remplacer complètement les experts en sécurité', false, 2),
-    (q_id, 'Créer des virus plus efficaces', false, 3),
-    (q_id, 'Contourner automatiquement les pare-feux', false, 4);
+    (q_id, 'Créer des virus plus puissants', false, 3),
+    (q_id, 'L''IA n''est pas utile en cybersécurité', false, 4);
 
-  -- I4
+  -- IA3
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_ia, 'Quel est le risque principal de l''utilisation de l''IA générative pour créer des emails de phishing ?', 'L''IA générative peut produire des emails de phishing convaincants, personnalisés et sans fautes d''orthographe, rendant la détection par les utilisateurs beaucoup plus difficile que les tentatives artisanales.', 'intermediaire')
+    (gen_random_uuid(), cat_ia, 'Qu''est-ce que l''éthique en cybersécurité ?', 'L''éthique en cybersécurité concerne les règles morales qui guident le comportement des professionnels : respecter la loi, protéger la vie privée, ne pas abuser de ses accès.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Des emails de phishing plus convaincants, personnalisés et difficiles à détecter', true, 1),
-    (q_id, 'Des emails envoyés plus rapidement', false, 2),
-    (q_id, 'Des emails qui contournent les antivirus', false, 3),
-    (q_id, 'Des emails qui se suppriment automatiquement', false, 4);
+    (q_id, 'Les règles morales qui guident le comportement des professionnels de la sécurité', true, 1),
+    (q_id, 'Les lois sur Internet uniquement', false, 2),
+    (q_id, 'Un outil de pentest', false, 3),
+    (q_id, 'Un type de chiffrement', false, 4);
 
-  -- I5
+  -- IA4
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_ia, 'Qu''est-ce que la divulgation responsable (responsible disclosure) ?', 'La divulgation responsable consiste à signaler une vulnérabilité découverte au propriétaire du système et à lui laisser un délai raisonnable pour corriger avant toute publication, protégeant ainsi les utilisateurs.', 'facile')
+    (gen_random_uuid(), cat_ia, 'Pourquoi est-il important de respecter la vie privée en cybersécurité ?', 'Un professionnel de la cybersécurité a souvent accès à des données sensibles. Abuser de cet accès viole la confiance, la loi et peut causer de graves préjudices aux personnes.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Signaler la vulnérabilité au propriétaire et attendre un correctif avant publication', true, 1),
-    (q_id, 'Publier immédiatement la vulnérabilité sur les réseaux sociaux', false, 2),
-    (q_id, 'Vendre la vulnérabilité au plus offrant', false, 3),
-    (q_id, 'Garder la vulnérabilité secrète indéfiniment', false, 4);
+    (q_id, 'Car on a accès à des données sensibles et il faut respecter la confiance', true, 1),
+    (q_id, 'Ce n''est pas important si on est autorisé', false, 2),
+    (q_id, 'Uniquement pour éviter des amendes', false, 3),
+    (q_id, 'La vie privée n''existe pas sur Internet', false, 4);
 
-  -- I6
+  -- IA5
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_ia, 'Qu''est-ce qu''un programme de bug bounty ?', 'Un bug bounty est un programme officiel par lequel une organisation récompense financièrement les chercheurs en sécurité qui découvrent et signalent des vulnérabilités dans ses systèmes, dans un cadre défini.', 'facile')
+    (gen_random_uuid(), cat_ia, 'Qu''est-ce qu''un deepfake ?', 'Un deepfake est un contenu (vidéo, audio, image) généré ou modifié par l''IA pour faire croire qu''une personne dit ou fait quelque chose qu''elle n''a jamais fait.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Un programme de récompenses pour les chercheurs qui signalent des vulnérabilités', true, 1),
-    (q_id, 'Un concours de programmation', false, 2),
-    (q_id, 'Une assurance contre les cyberattaques', false, 3),
-    (q_id, 'Un logiciel de détection de bugs', false, 4);
+    (q_id, 'Un faux contenu réaliste généré par l''IA', true, 1),
+    (q_id, 'Un réseau profond (deep web)', false, 2),
+    (q_id, 'Un type de chiffrement avancé', false, 3),
+    (q_id, 'Un antivirus basé sur l''IA', false, 4);
 
-  -- I7
+  -- IA6
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_ia, 'Quel cadre réglementaire européen protège les données personnelles des citoyens ?', 'Le RGPD (Règlement Général sur la Protection des Données) impose des obligations strictes sur la collecte, le traitement et la conservation des données personnelles, avec des sanctions pouvant atteindre 4% du CA mondial.', 'facile')
+    (gen_random_uuid(), cat_ia, 'Les pirates peuvent-ils utiliser l''IA pour attaquer ?', 'Oui, l''IA peut être utilisée pour automatiser des attaques, créer des phishing plus convaincants, générer des deepfakes ou trouver des vulnérabilités plus rapidement.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Le RGPD (Règlement Général sur la Protection des Données)', true, 1),
-    (q_id, 'La directive NIS2', false, 2),
-    (q_id, 'Le standard PCI DSS', false, 3),
-    (q_id, 'La norme ISO 27001', false, 4);
+    (q_id, 'Oui, pour créer des attaques plus sophistiquées et automatisées', true, 1),
+    (q_id, 'Non, l''IA ne peut pas être utilisée pour attaquer', false, 2),
+    (q_id, 'Uniquement les gouvernements peuvent utiliser l''IA', false, 3),
+    (q_id, 'L''IA empêche automatiquement les attaques', false, 4);
 
-  -- I8
+  -- IA7
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_ia, 'Qu''est-ce qu''une attaque adversariale contre un modèle d''IA ?', 'Une attaque adversariale consiste à modifier subtilement les données d''entrée d''un modèle d''IA pour le tromper et produire une sortie erronée, comme ajouter du bruit invisible à une image pour fausser sa classification.', 'avance')
+    (gen_random_uuid(), cat_ia, 'Qu''est-ce que le RGPD ?', 'Le RGPD (Règlement Général sur la Protection des Données) est une loi européenne qui protège les données personnelles des citoyens et impose des obligations aux entreprises.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Modifier subtilement les entrées pour tromper le modèle et obtenir une sortie erronée', true, 1),
-    (q_id, 'Attaquer le serveur hébergeant le modèle d''IA', false, 2),
-    (q_id, 'Voler le code source du modèle', false, 3),
-    (q_id, 'Saturer le modèle avec trop de requêtes', false, 4);
+    (q_id, 'Une loi européenne sur la protection des données personnelles', true, 1),
+    (q_id, 'Un protocole réseau', false, 2),
+    (q_id, 'Un outil de piratage', false, 3),
+    (q_id, 'Un type de chiffrement', false, 4);
 
-  -- I9
+  -- IA8
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_ia, 'Pourquoi est-il important de ne pas accéder à un système informatique sans autorisation, même pour y chercher des failles ?', 'L''accès non autorisé à un système informatique est un délit pénal dans la plupart des pays (en France : article 323-1 du Code pénal), même sans intention malveillante et même si des vulnérabilités sont effectivement trouvées.', 'facile')
+    (gen_random_uuid(), cat_ia, 'Qu''est-ce que le dark web ?', 'Le dark web est une partie cachée d''Internet accessible uniquement via des logiciels spéciaux comme Tor. Il contient des contenus légaux et illégaux.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'C''est un délit pénal, même sans intention malveillante', true, 1),
-    (q_id, 'Parce que le système pourrait être endommagé accidentellement', false, 2),
-    (q_id, 'Parce que cela consomme trop de bande passante', false, 3),
-    (q_id, 'Parce que les outils utilisés pourraient être défectueux', false, 4);
+    (q_id, 'Une partie cachée d''Internet accessible via des outils spéciaux', true, 1),
+    (q_id, 'Un site web avec un thème sombre', false, 2),
+    (q_id, 'Internet quand il y a une panne', false, 3),
+    (q_id, 'Un réseau réservé aux hackers', false, 4);
 
-  -- I10
+  -- IA9
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_ia, 'Qu''est-ce que le prompt injection dans le contexte des LLM (Large Language Models) ?', 'Le prompt injection consiste à injecter des instructions malveillantes dans les entrées d''un LLM pour détourner son comportement prévu, contourner ses restrictions ou lui faire révéler des informations sensibles.', 'intermediaire')
+    (gen_random_uuid(), cat_ia, 'Qu''est-ce que la divulgation responsable (responsible disclosure) ?', 'La divulgation responsable consiste à signaler une faille de sécurité au propriétaire du système et à lui laisser le temps de la corriger avant de la rendre publique.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Injecter des instructions malveillantes pour détourner le comportement d''un LLM', true, 1),
-    (q_id, 'Poser trop de questions à un chatbot', false, 2),
-    (q_id, 'Modifier le code source d''un modèle d''IA', false, 3),
-    (q_id, 'Entraîner un modèle avec des données corrompues', false, 4);
+    (q_id, 'Signaler une faille au propriétaire et attendre sa correction avant publication', true, 1),
+    (q_id, 'Publier la faille immédiatement sur les réseaux sociaux', false, 2),
+    (q_id, 'Vendre la faille au plus offrant', false, 3),
+    (q_id, 'Ignorer la faille', false, 4);
 
-  -- I11
+  -- IA10
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_ia, 'Quel est le principe du « moindre privilège » en sécurité informatique ?', 'Le principe du moindre privilège stipule qu''un utilisateur ou un processus ne doit disposer que des droits strictement nécessaires à l''accomplissement de sa tâche, minimisant l''impact en cas de compromission.', 'facile')
+    (gen_random_uuid(), cat_ia, 'Qu''est-ce que le machine learning ?', 'Le machine learning (apprentissage automatique) est une branche de l''IA où les programmes apprennent à partir de données, sans être explicitement programmés pour chaque tâche.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'N''accorder que les droits strictement nécessaires à chaque utilisateur ou processus', true, 1),
-    (q_id, 'Donner tous les droits aux administrateurs uniquement', false, 2),
-    (q_id, 'Limiter le nombre d''utilisateurs sur un système', false, 3),
-    (q_id, 'Désactiver tous les services non essentiels', false, 4);
+    (q_id, 'Des programmes qui apprennent à partir de données', true, 1),
+    (q_id, 'Des machines qui apprennent à marcher', false, 2),
+    (q_id, 'Un cours en ligne sur les machines', false, 3),
+    (q_id, 'La réparation automatique d''ordinateurs', false, 4);
 
-  -- I12
+  -- IA11
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_ia, 'Comment l''IA peut-elle aider à automatiser la détection de vulnérabilités dans le code source ?', 'L''IA peut analyser le code source pour détecter des patterns vulnérables (injections, mauvaises pratiques cryptographiques) et des anomalies que les analyseurs statiques traditionnels basés sur des règles ne détectent pas.', 'intermediaire')
+    (gen_random_uuid(), cat_ia, 'Pourquoi un pentester doit-il agir dans les limites du scope ?', 'Dépasser le scope est illégal et non éthique. Cela pourrait endommager des systèmes non autorisés et violer la confiance du client.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'En détectant des patterns vulnérables et des anomalies dans le code via l''apprentissage automatique', true, 1),
-    (q_id, 'En réécrivant automatiquement le code de manière sécurisée', false, 2),
-    (q_id, 'En supprimant les lignes de code dangereuses', false, 3),
-    (q_id, 'En empêchant les développeurs de commettre des erreurs', false, 4);
+    (q_id, 'Dépasser le scope est illégal et peut endommager des systèmes non autorisés', true, 1),
+    (q_id, 'Le scope n''est qu''une suggestion', false, 2),
+    (q_id, 'On peut dépasser le scope si on trouve quelque chose d''intéressant', false, 3),
+    (q_id, 'Le scope ne concerne que les débutants', false, 4);
 
-  -- I13
+  -- IA12
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_ia, 'Qu''est-ce que l''ingénierie sociale (social engineering) ?', 'L''ingénierie sociale manipule psychologiquement les personnes pour obtenir des informations confidentielles ou un accès non autorisé, exploitant la confiance, l''urgence ou l''autorité plutôt que des failles techniques.', 'facile')
+    (gen_random_uuid(), cat_ia, 'Qu''est-ce que la confidentialité en cybersécurité ?', 'La confidentialité garantit que les informations ne sont accessibles qu''aux personnes autorisées. C''est un des trois piliers de la sécurité avec l''intégrité et la disponibilité (CIA).', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Manipuler des personnes pour obtenir des informations ou un accès en exploitant des biais psychologiques', true, 1),
-    (q_id, 'Utiliser des outils sociaux (réseaux) pour scanner des vulnérabilités', false, 2),
-    (q_id, 'Concevoir des systèmes informatiques ergonomiques', false, 3),
-    (q_id, 'Automatiser les interactions entre les utilisateurs et le système', false, 4);
+    (q_id, 'Garantir que les informations ne sont accessibles qu''aux personnes autorisées', true, 1),
+    (q_id, 'Garder un secret personnel', false, 2),
+    (q_id, 'Cacher l''existence d''un réseau', false, 3),
+    (q_id, 'Supprimer toutes les données après utilisation', false, 4);
 
-  -- I14
+  -- IA13
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_ia, 'Quel risque l''IA pose-t-elle en termes de deepfakes pour la cybersécurité ?', 'Les deepfakes générés par l''IA peuvent être utilisés pour usurper l''identité de dirigeants dans des fraudes au virement (arnaque au président), contourner l''authentification biométrique ou propager de la désinformation.', 'intermediaire')
+    (gen_random_uuid(), cat_ia, 'Que signifie le sigle "CIA" en cybersécurité ?', 'CIA signifie Confidentiality, Integrity, Availability (Confidentialité, Intégrité, Disponibilité). Ce sont les trois piliers fondamentaux de la sécurité de l''information.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Usurper des identités pour des fraudes et contourner l''authentification biométrique', true, 1),
-    (q_id, 'Ralentir les systèmes de surveillance', false, 2),
-    (q_id, 'Bloquer les caméras de sécurité', false, 3),
-    (q_id, 'Saturer les réseaux avec de fausses images', false, 4);
+    (q_id, 'Confidentialité, Intégrité, Disponibilité', true, 1),
+    (q_id, 'Central Intelligence Agency uniquement', false, 2),
+    (q_id, 'Computer Internet Access', false, 3),
+    (q_id, 'Certified Information Analyst', false, 4);
 
-  -- I15
+  -- IA14
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_ia, 'Qu''est-ce que le data poisoning dans le contexte de l''IA ?', 'Le data poisoning consiste à introduire des données malveillantes dans le jeu d''entraînement d''un modèle d''IA pour corrompre son apprentissage et le faire produire des résultats incorrects ou biaisés.', 'avance')
+    (gen_random_uuid(), cat_ia, 'Comment un chatbot IA peut-il être utilisé dans le phishing ?', 'Un attaquant peut utiliser un chatbot IA pour créer des e-mails de phishing personnalisés et convaincants, rédigés sans fautes et adaptés à chaque victime.', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'Introduire des données malveillantes dans l''entraînement pour corrompre le modèle', true, 1),
-    (q_id, 'Voler les données d''entraînement d''un modèle', false, 2),
-    (q_id, 'Empoisonner le cache DNS d''un serveur d''IA', false, 3),
-    (q_id, 'Supprimer les données d''entraînement d''un modèle', false, 4);
+    (q_id, 'Pour créer des e-mails de phishing personnalisés et convaincants', true, 1),
+    (q_id, 'Les chatbots ne peuvent pas être utilisés pour le phishing', false, 2),
+    (q_id, 'Pour bloquer automatiquement les tentatives de phishing', false, 3),
+    (q_id, 'Pour envoyer des spams publicitaires', false, 4);
 
-  -- I16
+  -- IA15
   INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
-    (gen_random_uuid(), cat_ia, 'Quel principe éthique implique que les résultats d''un test de pénétration doivent rester confidentiels ?', 'La confidentialité des résultats est un principe éthique fondamental : les vulnérabilités découvertes ne doivent être partagées qu''avec le client et les parties autorisées, jamais divulguées publiquement sans accord.', 'facile')
+    (gen_random_uuid(), cat_ia, 'Qu''est-ce que l''intégrité des données ?', 'L''intégrité garantit que les données n''ont pas été modifiées ou altérées de manière non autorisée. On vérifie l''intégrité avec des hash (empreintes numériques).', 'facile')
     RETURNING id INTO q_id;
   INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
-    (q_id, 'La confidentialité et le secret professionnel', true, 1),
-    (q_id, 'La transparence totale', false, 2),
-    (q_id, 'La liberté d''expression', false, 3),
-    (q_id, 'Le droit à l''information', false, 4);
+    (q_id, 'La garantie que les données n''ont pas été modifiées sans autorisation', true, 1),
+    (q_id, 'La vitesse de transfert des données', false, 2),
+    (q_id, 'La quantité de données stockées', false, 3),
+    (q_id, 'Le nombre de copies de sauvegarde', false, 4);
+
+  -- IA16
+  INSERT INTO questions (id, category_id, enonce, explication, difficulte) VALUES
+    (gen_random_uuid(), cat_ia, 'Qu''est-ce que la disponibilité en cybersécurité ?', 'La disponibilité garantit que les systèmes et données sont accessibles quand les utilisateurs autorisés en ont besoin. Une attaque DDoS est un exemple d''atteinte à la disponibilité.', 'facile')
+    RETURNING id INTO q_id;
+  INSERT INTO answer_options (question_id, texte, est_correcte, sort_order) VALUES
+    (q_id, 'Garantir que les systèmes sont accessibles quand on en a besoin', true, 1),
+    (q_id, 'Avoir Internet 24h/24', false, 2),
+    (q_id, 'Rendre toutes les données publiques', false, 3),
+    (q_id, 'Avoir un ordinateur portable', false, 4);
 
 END $$;
