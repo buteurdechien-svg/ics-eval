@@ -34,15 +34,23 @@ export async function POST(request: NextRequest) {
     const sessionToken = generateSessionToken();
 
     // Log the login
-    await db.from("admin_audit_logs").insert({
+    const { error: insertError } = await db.from("admin_audit_logs").insert({
       admin_email: parsed.data.email,
       action: "login",
       details: {
         session_token: sessionToken,
         user_agent: request.headers.get("user-agent"),
-        ip: request.headers.get("x-forwarded-for") ?? "unknown",
       },
+      ip_address: (request.headers.get("x-forwarded-for") ?? "").split(",")[0].trim() || null,
     });
+
+    if (insertError) {
+      console.error("Failed to insert admin audit log:", insertError);
+      return NextResponse.json(
+        { error: "Erreur lors de la création de session" },
+        { status: 500 }
+      );
+    }
 
     // Set session cookie
     const response = NextResponse.json({ success: true });
