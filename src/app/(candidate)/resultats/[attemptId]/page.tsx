@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -32,7 +32,7 @@ interface ResultData {
   whatsappLink?: string;
 }
 
-export default function ResultatsPage() {
+function ResultatsContent() {
   const params = useParams();
   const attemptId = params.attemptId as string;
   const [data, setData] = useState<ResultData | null>(null);
@@ -242,5 +242,19 @@ export default function ResultatsPage() {
         </p>
       </main>
     </div>
+  );
+}
+
+export default function ResultatsPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-dvh flex items-center justify-center">
+          <p className="text-text-muted text-sm">Chargement…</p>
+        </div>
+      }
+    >
+      <ResultatsContent />
+    </Suspense>
   );
 }

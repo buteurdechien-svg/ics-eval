@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { QuestionForm } from "@/components/admin/question-form";
 
-export default function EditQuestionPage() {
+function EditQuestionContent() {
   const router = useRouter();
   const params = useParams<{ id: string }>();
   const [categories, setCategories] = useState<
@@ -85,5 +85,19 @@ export default function EditQuestionPage() {
         questionId={params.id}
       />
     </div>
+  );
+}
+
+export default function EditQuestionPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex items-center justify-center h-32">
+          <div className="w-6 h-6 border-2 border-electric border-t-transparent rounded-full animate-spin" />
+        </div>
+      }
+    >
+      <EditQuestionContent />
+    </Suspense>
   );
 }

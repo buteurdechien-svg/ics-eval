@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -31,7 +31,7 @@ interface CandidateDetail {
   }[];
 }
 
-export default function CandidateDetailPage() {
+function CandidateDetailContent() {
   const router = useRouter();
   const params = useParams<{ id: string }>();
   const [data, setData] = useState<CandidateDetail | null>(null);
@@ -212,5 +212,19 @@ export default function CandidateDetailPage() {
         ))}
       </div>
     </div>
+  );
+}
+
+export default function CandidateDetailPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex items-center justify-center h-32">
+          <div className="w-6 h-6 border-2 border-electric border-t-transparent rounded-full animate-spin" />
+        </div>
+      }
+    >
+      <CandidateDetailContent />
+    </Suspense>
   );
 }
