@@ -33,8 +33,13 @@ export async function POST(request: NextRequest) {
     // Generate session token
     const sessionToken = generateSessionToken();
 
+    // Use a fresh service-role client for the insert.
+    // After signInWithPassword the first client holds the user's JWT,
+    // which is subject to RLS and has no INSERT policy on admin_audit_logs.
+    const dbAdmin = createServerClient();
+
     // Log the login
-    const { error: insertError } = await db.from("admin_audit_logs").insert({
+    const { error: insertError } = await dbAdmin.from("admin_audit_logs").insert({
       admin_email: parsed.data.email,
       action: "login",
       details: {
